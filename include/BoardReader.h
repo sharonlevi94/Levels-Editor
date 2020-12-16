@@ -2,7 +2,6 @@
 //---------------------------- include section -------------------------------
 #include <fstream>
 #include <vector>
-#include "Map.h"
 //------------------------------ using section -------------------------------
 using std::ifstream;
 /*----------------------------------------------------------------------------
@@ -16,9 +15,6 @@ public:
 	BoardReader();
 
 	//------------------------- method section -------------------------------
-
-	bool thereIsNextLevel(); // not const because tellg() isn't const.
-	Map readNextLevel();
 private:
 	//--------------------- privete methods section --------------------------
 	
