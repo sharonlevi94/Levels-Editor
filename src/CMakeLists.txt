@@ -10,4 +10,5 @@
                                      "Window.cpp"
                                      "Menu.cpp"
                                      "Button.cpp"
-                                     "Controller.cpp")
+                                     "Controller.cpp"
+                                     "BoardReader.cpp")
