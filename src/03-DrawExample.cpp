@@ -4,12 +4,13 @@
 
 void drawExample()
 {
-    auto window = sf::RenderWindow(sf::VideoMode(200, 200), "Draw() example");
-    int width=100, height=100;
+    auto window = sf::RenderWindow(sf::VideoMode(1000, 600), "Draw() example");
+    int width=300, height=300;
     //auto circle = sf::CircleShape(100);
     
     auto rectangle = sf::RectangleShape(sf::Vector2f(width,height));
-    rectangle.setFillColor(sf::Color::Blue);
+    rectangle.setFillColor(sf::Color::Yellow);
+    rectangle.setPosition(width/2, height/2);
     
     while (window.isOpen())
     {

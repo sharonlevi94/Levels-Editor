@@ -9,10 +9,10 @@
 
 #include <thread>
 
-
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Menu.h"
+#include "Button.h"
 int main()
 {
    /* {
@@ -29,38 +29,27 @@ int main()
 
     //clearDisplayExample();
 
-    //drawExample();
+   // drawExample();
 
    // auto mouseClickExample = MouseClickExample();
    // mouseClickExample.run();
 
-    DrawManyExample().run();
+    //DrawManyExample().run();
 
     //textureAndFontExample();
 
     //SetOriginExample().run();
     
-    sf::RenderWindow window(sf::VideoMode(600, 600), "ex4_sharon_levi_eliad_karni");
-    Menu menu(window.getSize().x, window.getSize().y);
-    
+    sf::RenderWindow window(sf::VideoMode(1700, 900), "ex4_sharon_levi_eliad_karni");
+    Menu menu(100,100);
+  
     while (window.isOpen()) {
         
         sf::Event evnt;
        
         while (window.pollEvent(evnt)) {
             switch (evnt.type) {
-            case sf::Event::KeyReleased:{
-                switch (evnt.key.code)
-                {
-                case sf::Keyboard::Up:
-                    menu.MoveUp();
-                    break;
-                case sf::Keyboard::Down:
-                    menu.MoveDown();
-                    break;
-                }
-                break;
-                }
+            
             case sf::Event::Closed:
                 window.close();
                 break;

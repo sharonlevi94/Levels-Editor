@@ -154,7 +154,34 @@
 			"path" : "resources/CMakeLists.txt"
 		},
 		{
-			"path" : "resources/digger.png"
+			"path" : "resources/player.png"
+		},
+		{
+			"path" : "resources/coin.png"
+		},
+		{
+			"path" : "resources/enemy.png"
+		},
+		{
+			"path" : "resources/eraser.png"
+		},
+		{
+			"path" : "resources/ladder.png"
+		},
+		{
+			"path" : "resources/menu.png"
+		},
+		{
+			"path" : "resources/rod.png"
+		},
+		{
+			"path" : "resources/save.png"
+		},
+		{
+			"path" : "resources/trash.png"
+		},
+		{
+			"path" : "resources/wall.png"
 		}
 	],
 	"kind" : "cmakeFiles",

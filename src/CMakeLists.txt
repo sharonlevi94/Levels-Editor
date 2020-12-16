@@ -8,4 +8,5 @@
                                      "06-TextureAndFontExample.cpp"
                                      "07-SetOriginExample.cpp"
                                      "Window.cpp"
-                                     "Menu.cpp")
+                                     "Menu.cpp"
+                                     "Button.cpp")
