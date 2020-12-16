@@ -9,4 +9,5 @@
                                      "07-SetOriginExample.cpp"
                                      "Window.cpp"
                                      "Menu.cpp"
-                                     "Button.cpp")
+                                     "Button.cpp"
+                                     "Controller.cpp")
