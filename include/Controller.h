@@ -4,6 +4,7 @@
 #include "Menu.h"
 
 class Controller {
+public:
 	Controller();
 
 	void run();

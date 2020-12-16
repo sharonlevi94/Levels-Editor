@@ -3,7 +3,7 @@
 #include "Menu.h"
 
 Controller::Controller() : 
-	m_window(sf::VideoMode(WINDOW_HEIGHT, WINDOW_WIDTH), "ex4"),
+	m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "ex4"),
 	m_menu(Menu(MENU_WIDTH, MENU_HEIGHT)){
 
 }
@@ -25,7 +25,7 @@ void Controller::run() {
 			{
 				auto location = m_window.mapPixelToCoords(
 					{ event.mouseButton.x, event.mouseButton.y });
-				this->m_menu.handleClick(location);
+				//if(this->m_menu.handleClick(location) == OUT_RANGE_CLICK);
 				break;
 			}
 			}

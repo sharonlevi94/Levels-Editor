@@ -91,7 +91,7 @@
 			[
 				{
 					"backtrace" : 5,
-					"path" : "C:/Users/sharonlevi/source/repos/SFML_example/include"
+					"path" : "D:/Projects/Visual Studio Projects/gitHub/oop1_ex4/include"
 				},
 				{
 					"backtrace" : 2,
@@ -113,7 +113,8 @@
 				8,
 				9,
 				10,
-				11
+				11,
+				12
 			]
 		}
 	],
@@ -195,7 +196,8 @@
 				8,
 				9,
 				10,
-				11
+				11,
+				12
 			]
 		}
 	],
@@ -271,6 +273,12 @@
 			"backtrace" : 6,
 			"compileGroupIndex" : 0,
 			"path" : "src/Button.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "src/Controller.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
