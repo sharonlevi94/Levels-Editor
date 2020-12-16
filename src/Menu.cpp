@@ -2,7 +2,6 @@
 #include "Button.h"
 #include <iostream>
 using std::cout;
-//1234
 Menu::Menu(int width,int height)
 {
 	sf::Texture texture;
