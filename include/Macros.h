@@ -1,6 +1,7 @@
 #pragma once
 #define MAX_NUM_OF_ITEMS 10
 #define PLAYER '@'
+#define NOTHING ' '
 #define ENEMY '%'
 #define LADDER 'H'
 #define ROD '-'

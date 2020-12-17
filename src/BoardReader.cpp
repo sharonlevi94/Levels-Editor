@@ -3,6 +3,10 @@
  */
  //---------------------------- include section -------------------------------
 #include "BoardReader.h"
+#include "Macros.h"
+#include "Utilities.h"
+#include <vector>
+#include <iostream>
 #include <fstream>
 
 //-------------------------- constractors section ----------------------------
@@ -15,36 +19,25 @@
 BoardReader::BoardReader() {
 	this->m_boardReader.open(BOARD_PATH);
 	if (!(this->m_boardReader.is_open()))
-		terminate("opening boards files error!");
+		terminate("Unable to create Board.txt file!");
+	this->m_mapSize = receiveMapSize();
 }
 //---------------------------- methods section -------------------------------
-/*----------------------------------------------------------------------------
- * The method check if there is a new level to load.
- * input: None.
- * output: true if there is new level and false if isn't.
-*/
-bool BoardReader::thereIsNextLevel() {
-	return (this->m_boardReader.peek() == '\n');
-}
 /*----------------------------------------------------------------------------
  * The method read a new level from the file into a 2D vector.
  * input: None.
  * output: the new level as a map object.
 */
-Map BoardReader::readNextLevel() {
-	vector<vector<char>> map;
-	bool playerReceived = false;
+std::vector<std::vector<char>> BoardReader::readNextLevel() {
+	std::vector<std::vector<char>> map;
+
 	char receivedChar;
 	int size = receiveMapSize();
-
-	Location playerLoc;
-	vector<Location> enemysLocs;
-	vector<Location> coinsLocs;
 
 	if(this->m_boardReader.peek() == '\n')
 		this->m_boardReader.get();
 	for (int i = 0; i < size; ++i) {
-		vector<char> receivedMapRow = {};
+		std::vector<char> receivedMapRow = {};
 		for (int j = 0; j < size; ++j) {
 			this->m_boardReader.get(receivedChar);
 			switch (receivedChar)
@@ -53,15 +46,7 @@ Map BoardReader::readNextLevel() {
 				if (playerReceived)
 					terminate("player received twice!");
 				playerReceived = true;
-				playerLoc = Location(i, j);
 				receivedMapRow.push_back(NOTHING);
-				break;
-			case PLAYER_CLIME:
-				if (playerReceived)
-					terminate("player received twice!");
-				playerReceived = true;
-				playerLoc = Location(i, j);
-				receivedMapRow.push_back(LADDER);
 				break;
 			case ENEMY:
 				enemysLocs.push_back(Location(i, j));
@@ -80,7 +65,6 @@ Map BoardReader::readNextLevel() {
 				receivedMapRow.push_back(ROD);
 				break;
 			case COIN:
-				coinsLocs.push_back(Location(i, j));
 				receivedMapRow.push_back(NOTHING);
 				break;
 			default:
@@ -106,7 +90,13 @@ Map BoardReader::readNextLevel() {
  * output: the size of the received map as an integer number.
 */
 int BoardReader::receiveMapSize() {
-	unsigned int size = 0;
+	if (this->m_boardReader.peek() == '\0') {
+		std::cout << "please enter wanted map size: ";
+		std::cin >> this->m_mapSize;
+		return this->m_mapSize;
+	}
+
+	int size = 0;
 	std::string charSize;
 	this->m_boardReader >> charSize;
 	for (int i = 0; i < charSize.size(); ++i) {

@@ -15,12 +15,13 @@ public:
 	BoardReader();
 
 	//------------------------- method section -------------------------------
+	std::vector < std::vector<char>> readNextLevel();
 private:
 	//--------------------- privete methods section --------------------------
 	
 	int receiveMapSize();
 
 	//------------------------ members section -------------------------------
-
+	int m_mapSize;
 	ifstream m_boardReader;
 };
