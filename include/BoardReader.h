@@ -15,7 +15,12 @@ public:
 	BoardReader();
 
 	//------------------------- method section -------------------------------
+	
 	std::vector < std::vector<char>> readLevel();
+	void saveMap(const std::vector<std::vector<char>>&);
+
+	//-------------------------- gets section --------------------------------
+	int getSize();
 private:
 	//--------------------- privete methods section --------------------------
 	
@@ -23,5 +28,5 @@ private:
 
 	//------------------------ members section -------------------------------
 	int m_mapSize;
-	ifstream m_boardReader;
+	std::fstream m_boardReader;
 };
