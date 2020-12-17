@@ -34,7 +34,7 @@ int BoardReader::getSize() { return this->m_mapSize; }
 std::vector<std::vector<char>> BoardReader::readLevel() {
 	std::vector<std::vector<char>> map;
 	
-	if (this->m_boardReader.peek() == '\0') {
+	if (this->m_boardReader.peek() == EOF) {
 		for (int i = 0; i < this->m_mapSize; ++i) {
 			std::vector<char> row = {};
 			for (int j = 0; j < this->m_mapSize; ++j)
@@ -111,7 +111,7 @@ void BoardReader::saveMap(const std::vector<std::vector<char>> &map) {
  * output: the size of the received map as an integer number.
 */
 int BoardReader::receiveMapSize() {
-	if (this->m_boardReader.peek() == '\0') {
+	if (this->m_boardReader.peek() == EOF) {
 		std::cout << "please enter wanted map size: ";
 		std::cin >> this->m_mapSize;
 		return this->m_mapSize;
