@@ -10,5 +10,6 @@ private:
 	sf::Vector2f m_size;
 	sf::Vector2f m_position;
 	sf::Texture m_texture;
+	
 };
 
