@@ -11,7 +11,6 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "Controller.h"
 #include "Menu.h"
 #include "Button.h"
 int main()
@@ -40,7 +39,24 @@ int main()
     //textureAndFontExample();
 
     //SetOriginExample().run();
-    Controller controller = Controller();
-
-    controller.run();
+    
+    sf::RenderWindow window(sf::VideoMode(1700, 900), "ex4_sharon_levi_eliad_karni");
+    Menu menu({ 150,900 });
+  
+    while (window.isOpen()) {
+        
+        sf::Event evnt;
+       
+        while (window.pollEvent(evnt)) {
+            switch (evnt.type) {
+            
+            case sf::Event::Closed:
+                window.close();
+                break;
+            }
+        }
+        window.clear();
+        menu.draw(window);
+        window.display();
+    }
 }
