@@ -8,17 +8,16 @@
 class Menu
 {
 public:
-	Menu(int width,int height);
+	//Menu();
+	Menu(sf::Vector2f size);
 
 	void draw(sf::RenderWindow& window);
 	//char handleClick(sf::Vector2f click_location);
 	
 private:
-	//int selectedItemIndex;
-	//sf::Font font;
-	//sf::Text menu[MAX_NUM_OF_ITEMS];
-	//sf::Texture textures[MAX_NUM_OF_ITEMS];
 	sf::Texture m_title;
 	std::vector<Button> m_Buttons;
+	sf::Vector2f m_position = { 0,0 };
+	sf::Vector2f m_size;
 };
 
