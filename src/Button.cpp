@@ -1,14 +1,15 @@
-#include "Button.h"
-Button::Button(sf::Vector2f size, sf::Vector2f position, sf::Texture texture) {
-	m_size = size;
-	m_position = position;
-	m_texture = texture;
-}
+#pragma once
+#include <SFML/Graphics.hpp>
+class Button
+{
+public:
+	Button(sf::Vector2f size,sf::Vector2f position,sf::Texture texture);
+	void drawButton(sf::RenderWindow& window);
 
+private:
+	sf::Vector2f m_size;
+	sf::Vector2f m_position;
+	sf::Texture m_texture;
+	
+};
 
-void Button::drawButton(sf::RenderWindow& window) {
-	sf::Sprite ButtonSprite;
-	ButtonSprite.setTexture(m_texture);
-	ButtonSprite.setPosition(m_position);
-	window.draw(ButtonSprite);
-}
