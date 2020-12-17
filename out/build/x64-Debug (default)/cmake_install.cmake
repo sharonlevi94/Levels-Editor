@@ -1,8 +1,8 @@
-# Install script for directory: D:/Projects/Visual Studio Projects/gitHub/oop1_ex4
+# Install script for directory: C:/Users/sharonlevi/source/repos/sharonlevi94/oop1_ex4
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "D:/Projects/Visual Studio Projects/gitHub/oop1_ex4/out/install/x64-Debug (default)")
+  set(CMAKE_INSTALL_PREFIX "C:/Users/sharonlevi/Source/Repos/sharonlevi94/oop1_ex4/out/install/x64-Debug (default)")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,17 +34,17 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("D:/Projects/Visual Studio Projects/gitHub/oop1_ex4/out/build/x64-Debug (default)/include/cmake_install.cmake")
+  include("C:/Users/sharonlevi/source/repos/sharonlevi94/oop1_ex4/out/build/x64-Debug (default)/include/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("D:/Projects/Visual Studio Projects/gitHub/oop1_ex4/out/build/x64-Debug (default)/src/cmake_install.cmake")
+  include("C:/Users/sharonlevi/source/repos/sharonlevi94/oop1_ex4/out/build/x64-Debug (default)/src/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("D:/Projects/Visual Studio Projects/gitHub/oop1_ex4/out/build/x64-Debug (default)/resources/cmake_install.cmake")
+  include("C:/Users/sharonlevi/source/repos/sharonlevi94/oop1_ex4/out/build/x64-Debug (default)/resources/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -55,5 +55,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/Projects/Visual Studio Projects/gitHub/oop1_ex4/out/build/x64-Debug (default)/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/sharonlevi/source/repos/sharonlevi94/oop1_ex4/out/build/x64-Debug (default)/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -10,6 +10,7 @@ void Button::drawButton(sf::RenderWindow& window) {
 	sf::RectangleShape rec(m_size);
 	rec.setTexture(&m_texture);
 	rec.setPosition(m_position);
+
 	if (this->m_size.x == 100) {
 		rec.setOutlineColor(sf::Color::White);
 		rec.setOutlineThickness(3);

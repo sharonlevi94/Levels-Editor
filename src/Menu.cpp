@@ -4,8 +4,8 @@
 using std::cout;
 
 //Menu::Menu() {}
-Menu::Menu(sf::Vector2f size)
-	: m_size(size)
+Menu::Menu(sf::Vector2f size, sf::Vector2f position)
+	: m_size(size), m_position(position)
 {
 	sf::Texture texture;
 
@@ -94,5 +94,7 @@ void Menu::draw(sf::RenderWindow &window) {
 	}
 }
 
-//char Menu::handleClick(sf::Vector2f click_location) {}
+char Menu::handleClick(const sf::Event::MouseButtonEvent& event)
+{
+}
  
