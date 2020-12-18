@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Menu.h"
+#include "Board.h"
 
 class Controller {
 public:
@@ -11,4 +12,5 @@ public:
 private:
 	sf::RenderWindow m_window;
 	Menu m_menu;
+	Board m_board;
 };

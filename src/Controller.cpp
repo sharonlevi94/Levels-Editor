@@ -1,14 +1,15 @@
 #include <SFML/Graphics.hpp>
 #include "Controller.h"
 #include "Menu.h"
+#include "Board.h"
 
-Controller::Controller() : 
+Controller::Controller() :
 	m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "ex4"),
-	m_menu(Menu(MENU_WIDTH, MENU_HEIGHT)){
-
-}
+	m_menu(Menu(sf::Vector2((float)MENU_WIDTH, (float)MENU_HEIGHT))),
+	m_board(Board()) {}
 
 void Controller::run() {
+
 	while (this->m_window.isOpen())
 	{
 		this->m_window.clear();
