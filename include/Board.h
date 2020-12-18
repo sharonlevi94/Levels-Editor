@@ -13,9 +13,12 @@ public:
 	int getSize()const;
 
 	void draw(sf::RenderWindow& window)const;
+	void handleClick(const sf::Vector2f& clicLoc, char clickType);
+	void saveMap();
 private:
 	void loadMap();
 
+	sf::Vector2f playerLoc;
 	sf::Vector2f m_boardSize;
 	sf::Vector2f m_startLoc;
 	BoardReader m_boardReader;

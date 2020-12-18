@@ -31,6 +31,8 @@ void Controller::run() {
 					{ event.mouseButton.x, event.mouseButton.y });
 				if(location.x <= MENU_WIDTH)
 					std::cout << "menu pressed\n";
+				if (location.x > MENU_WIDTH)
+					this->m_board.handleClick(location, NOTHING);
 			}
 			}
 		}
