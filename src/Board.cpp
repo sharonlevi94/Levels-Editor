@@ -28,12 +28,15 @@ void Board::handleClick(const sf::Vector2f& clicLoc, char clickType) {
 	if (clicLoc.x < this->m_startLoc.x ||
 		clicLoc.x > this->m_startLoc.x + this->m_boardSize.x)
 		return;
-	int x = (clicLoc.x - this->m_startLoc.x)/this->getSize();
-	int y = (clicLoc.y - this->m_startLoc.y) / this->getSize();
-	if (clickType == PLAYER)
-		this->m_map[this->playerLoc.x][this->playerLoc.y] = NOTHING;
+	int x = (int)((clicLoc.x - this->m_startLoc.x)/ (this->m_boardSize.x / this->getSize()));
+	int y = (int)((clicLoc.y - this->m_startLoc.y) / (this->m_boardSize.y / this->getSize()));
 	this->m_map[x][y] = clickType;
-	std::cout << "received click at:/nrow: " << x << " col: " << y << std::endl;
+	if (clickType == PLAYER) {
+		if(this->playerLoc == sf::Vector2f(-1,-1))
+			this->m_map[(int)this->playerLoc.x][(int)this->playerLoc.y] = NOTHING;
+		this->playerLoc = sf::Vector2f((float)x, (float)y);
+	}
+	std::cout << "received click at:\nrow: " << x << " col: " << y << std::endl;
 }
 //============================================================================
 void Board::saveMap() { this->m_boardReader.saveMap(this->m_map); }
