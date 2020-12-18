@@ -28,9 +28,10 @@ BoardReader::BoardReader() {
  * input: None.
  * output: the new level as a map object.
 */
-std::vector<std::vector<char>> BoardReader::readNextLevel() {
+std::vector<std::vector<char>> BoardReader::readLevel() {
 	std::vector<std::vector<char>> map;
-
+	
+	bool playerReceived = false;
 	char receivedChar;
 	int size = receiveMapSize();
 
@@ -46,11 +47,10 @@ std::vector<std::vector<char>> BoardReader::readNextLevel() {
 				if (playerReceived)
 					terminate("player received twice!");
 				playerReceived = true;
-				receivedMapRow.push_back(NOTHING);
+				receivedMapRow.push_back(PLAYER);
 				break;
 			case ENEMY:
-				enemysLocs.push_back(Location(i, j));
-				receivedMapRow.push_back(NOTHING);
+				receivedMapRow.push_back(ENEMY);
 				break;
 			case WALL:
 				receivedMapRow.push_back(WALL);
@@ -65,7 +65,7 @@ std::vector<std::vector<char>> BoardReader::readNextLevel() {
 				receivedMapRow.push_back(ROD);
 				break;
 			case COIN:
-				receivedMapRow.push_back(NOTHING);
+				receivedMapRow.push_back(COIN);
 				break;
 			default:
 				std::string errorMessage = "receiving the char ";

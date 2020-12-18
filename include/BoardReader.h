@@ -15,7 +15,7 @@ public:
 	BoardReader();
 
 	//------------------------- method section -------------------------------
-	std::vector < std::vector<char>> readNextLevel();
+	std::vector < std::vector<char>> readLevel();
 private:
 	//--------------------- privete methods section --------------------------
 	
