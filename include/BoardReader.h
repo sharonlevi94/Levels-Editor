@@ -20,7 +20,7 @@ public:
 	void saveMap(const std::vector<std::vector<char>>&);
 
 	//-------------------------- gets section --------------------------------
-	int getSize();
+	int getSize()const;
 private:
 	//--------------------- privete methods section --------------------------
 	

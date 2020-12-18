@@ -131,7 +131,7 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:windows",
+				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
 				"role" : "flags"
 			},
 			{

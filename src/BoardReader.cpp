@@ -23,7 +23,7 @@ BoardReader::BoardReader() {
 	this->m_mapSize = receiveMapSize();
 }
 //------------------------------ gets section --------------------------------
-int BoardReader::getSize() { return this->m_mapSize; }
+int BoardReader::getSize()const { return this->m_mapSize; }
 
 //---------------------------- methods section -------------------------------
 /*----------------------------------------------------------------------------
@@ -107,16 +107,18 @@ void BoardReader::saveMap(const std::vector<std::vector<char>> &map) {
 /*----------------------------------------------------------------------------
  * The method check if the input size are a digits and what is the
  * size of the received map.
- * input: None
+ * input: None.
  * output: the size of the received map as an integer number.
 */
 int BoardReader::receiveMapSize() {
 	if (this->m_boardReader.peek() == EOF) {
+		return 10;
 		std::cout << "please enter wanted map size: ";
 		std::cin >> this->m_mapSize;
 		return this->m_mapSize;
 	}
 
+	int startPoint = (int)this->m_boardReader.tellg();
 	int size = 0;
 	std::string charSize;
 	this->m_boardReader >> charSize;
@@ -126,6 +128,6 @@ int BoardReader::receiveMapSize() {
 		size *= 10;
 		size += charSize[i] - '0';
 	}
-	this->m_boardReader.get();//get /n
+	this->m_boardReader.get();//get /n]
 	return size;
 }
