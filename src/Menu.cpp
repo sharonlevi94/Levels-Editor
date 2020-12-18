@@ -2,8 +2,8 @@
 #include "Button.h"
 #include <iostream>
 using std::cout;
-
-//Menu::Menu() {}
+//=============================================================================
+Menu::Menu() {}
 Menu::Menu(sf::Vector2f size, sf::Vector2f position)
 	: m_size(size), m_position(position)
 {
@@ -81,7 +81,7 @@ Menu::Menu(sf::Vector2f size, sf::Vector2f position)
 	m_Buttons.push_back(newButton);
 
 }
-
+//=============================================================================
 void Menu::draw(sf::RenderWindow &window) {
 
 	sf::RectangleShape backGround;
@@ -93,8 +93,13 @@ void Menu::draw(sf::RenderWindow &window) {
 		m_Buttons[i].drawButton(window);
 	}
 }
-
-char Menu::handleClick(const sf::Event::MouseButtonEvent& event)
+//=============================================================================
+sf::RectangleShape Menu::handleClick(const sf::Vector2f& clickLocation)
 {
+	for (auto i = size_t(0); i < m_Buttons.size() ; ++i)
+	{
+		if (m_Buttons[i].createShape().getGlobalBounds().contains(clickLocation))
+			return m_Buttons[i].createShape();
+	}
 }
  

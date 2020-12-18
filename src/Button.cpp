@@ -1,19 +1,26 @@
 #include "Button.h"
+//=============================================================================
 Button::Button(sf::Vector2f size, sf::Vector2f position, sf::Texture texture) {
 	m_size = size;
 	m_position = position;
 	m_texture = texture;
 
 }
-
+//=============================================================================
 void Button::drawButton(sf::RenderWindow& window) {
-	sf::RectangleShape rec(m_size);
-	rec.setTexture(&m_texture);
-	rec.setPosition(m_position);
-
-	if (this->m_size.x == 100) {
+	
+	if (this->m_size.x == 100) { //the rectangle include the title "menu"
+		auto rec = createShape();
 		rec.setOutlineColor(sf::Color::White);
 		rec.setOutlineThickness(3);
 	}
-	window.draw(rec);
+	window.draw(createShape());
+}
+//=============================================================================
+sf::RectangleShape Button::createShape() const
+{
+	auto shape = sf::RectangleShape(m_size);
+	shape.setTexture(&m_texture);
+	shape.setPosition(m_position);
+	return shape;
 }
