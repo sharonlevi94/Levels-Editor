@@ -77,11 +77,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "SFMLExamples::@6890427a1f51a3e7e1df",
-<<<<<<< HEAD:out/build/x64-Debug (default)/.cmake/api/v1/reply/codemodel-v2-8642ba1247b2da878660.json
-					"jsonFile" : "target-SFMLExamples-Debug-d03518798ac25fcd4cb7.json",
-=======
 					"jsonFile" : "target-SFMLExamples-Debug-43eb70660c715be5011a.json",
->>>>>>> 243f4310370c9a994d0698c95c9e91414fcac614:out/build/x64-Debug (default)/.cmake/api/v1/reply/codemodel-v2-aaf4191bdb2806830d83.json
 					"name" : "SFMLExamples",
 					"projectIndex" : 0
 				}
@@ -91,8 +87,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/sharonlevi/source/repos/sharonlevi94/oop1_ex4/out/build/x64-Debug (default)",
-		"source" : "C:/Users/sharonlevi/source/repos/sharonlevi94/oop1_ex4"
+		"build" : "D:/Projects/Visual Studio Projects/gitHub/oop1_ex4/out/build/x64-Debug (default)",
+		"source" : "D:/Projects/Visual Studio Projects/gitHub/oop1_ex4"
 	},
 	"version" : 
 	{
