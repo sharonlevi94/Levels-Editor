@@ -112,7 +112,7 @@ void BoardReader::saveMap(const std::vector<std::vector<char>> &map) {
 */
 int BoardReader::receiveMapSize() {
 	if (this->m_boardReader.peek() == EOF) {
-		return 10;
+		return 30;
 		int received = 0;
 		while (received == 0){
 			std::cout << "please enter wanted map size: ";
