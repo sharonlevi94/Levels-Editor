@@ -13,4 +13,5 @@
                                      "Controller.cpp"
                                      "BoardReader.cpp"
                                      "Board.cpp"
-                                     "Utilities.cpp")
+                                     "Utilities.cpp"
+                                     "Texturs.cpp")

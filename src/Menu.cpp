@@ -3,7 +3,6 @@
 #include <iostream>
 using std::cout;
 //=============================================================================
-Menu::Menu() {}
 Menu::Menu(sf::Vector2f size, sf::Vector2f position)
 	: m_size(size), m_position(position)
 {
@@ -96,10 +95,12 @@ void Menu::draw(sf::RenderWindow &window) {
 //=============================================================================
 sf::RectangleShape Menu::handleClick(const sf::Vector2f& clickLocation)
 {
-	for (auto i = size_t(0); i < m_Buttons.size() ; ++i)
+	auto i=size_t(0);
+	for (i = size_t(0); i < m_Buttons.size() ; ++i)
 	{
 		if (m_Buttons[i].createShape().getGlobalBounds().contains(clickLocation))
 			return m_Buttons[i].createShape();
 	}
+	return m_Buttons[i].createShape();
 }
  
