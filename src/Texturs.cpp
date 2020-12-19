@@ -93,6 +93,9 @@ const sf::Texture& Texturs::operator[](char c)const {
 	case SAVE: {
 		return this->m_texturs[9];
 	}
+	case MENU: {
+		return this->m_texturs[10];
+	}
 	default: return this->m_texturs[0];
 	}
 }

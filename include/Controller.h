@@ -10,6 +10,7 @@ public:
 
 	void run();
 private:
+	Texturs m_texturs;
 	sf::RenderWindow m_window;
 	Menu m_menu;
 	Board m_board;

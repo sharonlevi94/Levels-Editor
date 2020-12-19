@@ -1,5 +1,6 @@
 #pragma once
 #include "BoardReader.h"
+#include "Texturs.h"
 #include <vector>
 #include <SFML/Graphics.hpp>
 
@@ -12,7 +13,7 @@ public:
 
 	int getSize()const;
 
-	void draw(sf::RenderWindow& window)const;
+	void draw(sf::RenderWindow& window, const Texturs& textures)const;
 	void handleClick(const sf::Vector2f& clicLoc, char clickType);
 	void saveMap();
 private:
