@@ -37,7 +37,7 @@ int main()
 
     //textureAndFontExample();
 
-    //SetOriginExample().run();
+    SetOriginExample().run();
     
     Controller controller = Controller();
     controller.run();
