@@ -99,3 +99,38 @@ const sf::Texture& Texturs::operator[](char c)const {
 	}
 }
 //===================================================================
+char Texturs::getSymbol(int index)const {
+	switch (index)
+	{
+	case 0:
+		return MENU;
+	case 1: {
+		return PLAYER;
+	}
+	case 2: {
+		return ENEMY;
+	}
+	case 3: {
+		return COIN;
+	}
+	case 4: {
+		return WALL;
+	}
+	case 5: {
+		return LADDER;
+	}
+	case 6: {
+		return ROD;
+	}
+	case 7: {
+		return DELETE;
+	}
+	case 8: {
+		return CLEAR;
+	}
+	case 9: {
+		return SAVE;
+	}
+	default: return MENU;
+	}
+}
