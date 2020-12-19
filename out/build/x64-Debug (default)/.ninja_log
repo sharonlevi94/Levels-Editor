@@ -1,4 +1,5 @@
 # ninja log v5
+<<<<<<< HEAD
 2499	3675	629975920	CMakeFiles/SFMLExamples.dir/src/Utilities.cpp.obj	a6b6e21a9399526a
 18	2627	629975919	CMakeFiles/SFMLExamples.dir/src/04-MouseClickExample.cpp.obj	a97bbd548cb4de57
 22	2506	629975919	CMakeFiles/SFMLExamples.dir/src/06-TextureAndFontExample.cpp.obj	fb7e99c24f7fac1a
@@ -22,3 +23,41 @@
 7	1366	629980722	CMakeFiles/SFMLExamples.dir/src/Menu.cpp.obj	b3f08ccfc7924a1
 1	1420	629980722	CMakeFiles/SFMLExamples.dir/src/main.cpp.obj	7d705d7db02ea935
 2	722	629980823	CMakeFiles/SFMLExamples.dir/src/Menu.cpp.obj	b3f08ccfc7924a1
+=======
+5	2441	629993663	CMakeFiles/SFMLExamples.dir/src/00-WindowExample.cpp.obj	e6a908e7a2ef4ab3
+8	2674	629993663	CMakeFiles/SFMLExamples.dir/src/03-DrawExample.cpp.obj	354e4313c655c5c9
+24	3011	629993663	CMakeFiles/SFMLExamples.dir/src/07-SetOriginExample.cpp.obj	1f0cdf22fed7665f
+5	846	630010045	CMakeFiles/SFMLExamples.dir/src/Menu.cpp.obj	1e210d9007abc934
+20	2856	629993663	CMakeFiles/SFMLExamples.dir/src/06-TextureAndFontExample.cpp.obj	16f253f628378fe8
+16	2627	629993663	CMakeFiles/SFMLExamples.dir/src/01-CloseEventExample.cpp.obj	927739f9c872fe28
+2447	4648	629993665	CMakeFiles/SFMLExamples.dir/src/Window.cpp.obj	5b7b277e97633e81
+2582	4533	629993665	CMakeFiles/SFMLExamples.dir/src/Button.cpp.obj	3518ad1468729ef2
+31	2745	629993663	CMakeFiles/SFMLExamples.dir/src/05-DrawManyExample.cpp.obj	371fbe0ec99db565
+12	2805	629993663	CMakeFiles/SFMLExamples.dir/src/02-ClearDisplayExample.cpp.obj	b649fce36c4b6fa
+2627	4122	629993664	CMakeFiles/SFMLExamples.dir/src/Utilities.cpp.obj	34e7bcad6bce6df1
+28	2894	629993663	CMakeFiles/SFMLExamples.dir/src/04-MouseClickExample.cpp.obj	7f5747d007dc02b9
+1	1335	630013864	CMakeFiles/SFMLExamples.dir/src/main.cpp.obj	5f58855d7d6acd1f
+1	655	630011368	CMakeFiles/SFMLExamples.dir/src/BoardReader.cpp.obj	b1e903dd8e2f5e6d
+1	874	630013919	CMakeFiles/SFMLExamples.dir/src/Board.cpp.obj	5521993af458206f
+5	1288	630013864	CMakeFiles/SFMLExamples.dir/src/Controller.cpp.obj	55806be481411e27
+875	1288	630013919	SFMLExamples.exe	3736a1a39611ffb3
+11	973	630014839	CMakeFiles/SFMLExamples.dir/src/BoardReader.cpp.obj	b1e903dd8e2f5e6d
+5	1172	630014839	CMakeFiles/SFMLExamples.dir/src/Controller.cpp.obj	55806be481411e27
+8	1185	630014839	CMakeFiles/SFMLExamples.dir/src/Board.cpp.obj	5521993af458206f
+1	1251	630014839	CMakeFiles/SFMLExamples.dir/src/main.cpp.obj	5f58855d7d6acd1f
+1252	1589	630014839	SFMLExamples.exe	3736a1a39611ffb3
+2	859	630015102	CMakeFiles/SFMLExamples.dir/src/Board.cpp.obj	5521993af458206f
+859	1154	630015102	SFMLExamples.exe	3736a1a39611ffb3
+1	835	630015126	CMakeFiles/SFMLExamples.dir/src/Board.cpp.obj	5521993af458206f
+835	1176	630015126	SFMLExamples.exe	3736a1a39611ffb3
+1	891	630015148	CMakeFiles/SFMLExamples.dir/src/Board.cpp.obj	5521993af458206f
+891	1228	630015148	SFMLExamples.exe	3736a1a39611ffb3
+1	835	630015165	CMakeFiles/SFMLExamples.dir/src/Board.cpp.obj	5521993af458206f
+835	1177	630015165	SFMLExamples.exe	3736a1a39611ffb3
+1	820	630015176	CMakeFiles/SFMLExamples.dir/src/Board.cpp.obj	5521993af458206f
+820	1132	630015177	SFMLExamples.exe	3736a1a39611ffb3
+2	883	630015474	CMakeFiles/SFMLExamples.dir/src/Board.cpp.obj	5521993af458206f
+883	1186	630015475	SFMLExamples.exe	3736a1a39611ffb3
+1	873	630015531	CMakeFiles/SFMLExamples.dir/src/Board.cpp.obj	5521993af458206f
+873	1271	630015531	SFMLExamples.exe	3736a1a39611ffb3
+>>>>>>> dae6ec32eb2343e14912c9df759381230e3f0785

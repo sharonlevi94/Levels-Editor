@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/sharonlevi/source/repos/sharonlevi94/oop1_ex4/include
+# Install script for directory: D:/Projects/Visual Studio Projects/gitHub/oop1_ex4/include
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Users/sharonlevi/Source/Repos/sharonlevi94/oop1_ex4/out/install/x64-Debug (default)")
+  set(CMAKE_INSTALL_PREFIX "D:/Projects/Visual Studio Projects/gitHub/oop1_ex4/out/install/x64-Debug (default)")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
