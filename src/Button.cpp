@@ -1,9 +1,8 @@
 #include "Button.h"
 //=============================================================================
-Button::Button(sf::Vector2f size, sf::Vector2f position, sf::Texture texture) {
+Button::Button(sf::Vector2f size, sf::Vector2f position) {
 	m_size = size;
 	m_position = position;
-	m_texture = texture;
 
 }
 //=============================================================================

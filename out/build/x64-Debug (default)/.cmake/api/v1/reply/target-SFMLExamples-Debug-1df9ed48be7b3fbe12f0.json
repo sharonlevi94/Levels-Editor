@@ -91,7 +91,7 @@
 			[
 				{
 					"backtrace" : 5,
-					"path" : "D:/Projects/Visual Studio Projects/gitHub/oop1_ex4/include"
+					"path" : "C:/Users/sharonlevi/source/repos/sharonlevi94/oop1_ex4/include"
 				},
 				{
 					"backtrace" : 2,
@@ -117,7 +117,8 @@
 				12,
 				13,
 				14,
-				15
+				15,
+				16
 			]
 		}
 	],
@@ -203,7 +204,8 @@
 				12,
 				13,
 				14,
-				15
+				15,
+				16
 			]
 		}
 	],
@@ -303,6 +305,12 @@
 			"backtrace" : 6,
 			"compileGroupIndex" : 0,
 			"path" : "src/Utilities.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "src/Texturs.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

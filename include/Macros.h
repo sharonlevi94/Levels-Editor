@@ -10,7 +10,6 @@ constexpr auto COIN = '*';
 constexpr auto SAVE = 's';
 constexpr auto DELETE = 'd';
 constexpr auto CLEAR = 'c';
-constexpr auto OUT_RANGE_CLICK = '~';
 
 constexpr auto WINDOW_HEIGHT = 1000;
 constexpr auto WINDOW_WIDTH = 1800;

@@ -1,80 +1,55 @@
 #include "Menu.h"
 #include "Button.h"
 #include <iostream>
+#include "Texturs.h"
 using std::cout;
 //=============================================================================
 Menu::Menu(sf::Vector2f size, sf::Vector2f position)
 	: m_size(size), m_position(position)
 {
-	sf::Texture texture;
-
-	if (!texture.loadFromFile("menu.png")) {
-		cout << "Cannot load menu.png\n";
-	}
+	//set the title texture of the Menu:
 	Button newButton(sf::Vector2f(140, 80),
-		sf::Vector2f(size.x/12,0), texture);
+		sf::Vector2f(size.x/12,0));
 	m_Buttons.push_back(newButton);
-	
-	if (!texture.loadFromFile("player.png")) {
-		cout << "Cannot load player.png\n";
-	}
+
 	newButton=Button(sf::Vector2f(100, 80),
-		sf::Vector2f(size.x / 6, size.y / (MAX_NUM_OF_ITEMS) * 1), texture);
+		sf::Vector2f(size.x / 6, size.y / (MAX_NUM_OF_ITEMS) * 1));
 	m_Buttons.push_back(newButton);   
 
-	if (!texture.loadFromFile("enemy.png")) {
-		cout << "Cannot load enemy.png\n";
-	}
 	newButton = Button(sf::Vector2f(100, 80),
 		sf::Vector2f(size.x / 6,  size.y / (MAX_NUM_OF_ITEMS) * 2), texture);
 	m_Buttons.push_back(newButton);
 
-
-	if (!texture.loadFromFile("coin.png")) {
-		cout << "Cannot load coin.png\n";
-	}
 	newButton = Button(sf::Vector2f(100, 80),
 		sf::Vector2f(size.x / 6,  size.y / (MAX_NUM_OF_ITEMS) * 3), texture);
 	m_Buttons.push_back(newButton);
 
-	if (!texture.loadFromFile("wall.png")) {
-		cout << "Cannot load wall.png\n";
-	}
+	
 	newButton = Button(sf::Vector2f(100, 80),
 		sf::Vector2f(size.x / 6,  size.y / (MAX_NUM_OF_ITEMS) * 4), texture);
 	m_Buttons.push_back(newButton);
 
-	if (!texture.loadFromFile("ladder.png")) {
-		cout << "Cannot load ladder.png\n";
-	}
+	
 	newButton = Button(sf::Vector2f(100, 80),
 		sf::Vector2f(size.x / 6,  size.y / (MAX_NUM_OF_ITEMS) * 5), texture);
 	m_Buttons.push_back(newButton);
 
-	if (!texture.loadFromFile("rod.png")) {
-		cout << "Cannot load rod.png\n";
-	}
+	
 	newButton = Button(sf::Vector2f(100, 80),
 		sf::Vector2f(size.x / 6, size.y / (MAX_NUM_OF_ITEMS) * 6), texture);
 	m_Buttons.push_back(newButton);
 
-	if (!texture.loadFromFile("eraser.png")) {
-		cout << "Cannot load eraser.png\n";
-	}
+	
 	newButton = Button(sf::Vector2f(100, 80),
 		sf::Vector2f(size.x / 6,  size.y / (MAX_NUM_OF_ITEMS) * 7), texture);
 	m_Buttons.push_back(newButton);
 
-	if (!texture.loadFromFile("trash.png")) {
-		cout << "Cannot load trash.png\n";
-	}
+	
 	newButton = Button(sf::Vector2f(100, 80),
 		sf::Vector2f(size.x / 6,  size.y / (MAX_NUM_OF_ITEMS) * 8), texture);
 	m_Buttons.push_back(newButton);
 
-	if (!texture.loadFromFile("save.png")) {
-		cout << "Cannot load save.png\n";
-	}
+	
 	newButton = Button(sf::Vector2f(100, 80),
 		sf::Vector2f(size.x / 6,  size.y / (MAX_NUM_OF_ITEMS) * 9), texture);
 	m_Buttons.push_back(newButton);

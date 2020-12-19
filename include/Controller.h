@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Menu.h"
 #include "Board.h"
-
+#include "Texturs.h"
 class Controller {
 public:
 	Controller();
