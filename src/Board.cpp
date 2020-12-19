@@ -62,9 +62,9 @@ void Board::draw(sf::RenderWindow& window, const Texturs& textures)const {
 				this->m_startLoc.y + (boxSize.y * j));
 			box.setOutlineColor(sf::Color::Black);
 			box.setOutlineThickness(1);
-			if(this->m_map[i][j] != NOTHING)
+			//if(this->m_map[i][j] != NOTHING)
 				//textures passed as const so its safe.
-				box.setTexture(&textures[this->m_map[i][j]]);
+				//box.setTexture(&textures[this->m_map[i][j]]);
 			window.draw(box);
 		}
 	}
