@@ -7,8 +7,7 @@
 class Menu
 {
 public:
-	Menu();
-	Menu(sf::Vector2f size, sf::Vector2f);
+	Menu(sf::Vector2f size = sf::Vector2f(0,0), sf::Vector2f position = sf::Vector2f(0,0));
 
 	void draw(sf::RenderWindow& window);
 	sf::RectangleShape handleClick(const sf::Vector2f&);

@@ -77,11 +77,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "SFMLExamples::@6890427a1f51a3e7e1df",
-<<<<<<< HEAD:out/build/x64-Debug (default)/.cmake/api/v1/reply/codemodel-v2-8642ba1247b2da878660.json
-					"jsonFile" : "target-SFMLExamples-Debug-d03518798ac25fcd4cb7.json",
-=======
-					"jsonFile" : "target-SFMLExamples-Debug-43eb70660c715be5011a.json",
->>>>>>> 243f4310370c9a994d0698c95c9e91414fcac614:out/build/x64-Debug (default)/.cmake/api/v1/reply/codemodel-v2-aaf4191bdb2806830d83.json
+					"jsonFile" : "target-SFMLExamples-Debug-6c22a9604d63f04e429c.json",
 					"name" : "SFMLExamples",
 					"projectIndex" : 0
 				}
