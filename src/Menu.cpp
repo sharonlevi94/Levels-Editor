@@ -4,48 +4,64 @@
 using std::cout;
 //=============================================================================
 Menu::Menu(sf::Vector2f size, sf::Vector2f position)
-	: m_size(size), m_position(position){
+	: m_size(size), m_position(position),
+	m_logoHeight(140),
+	m_buttonHeight(0){
 	if (MAX_NUM_OF_ITEMS != 0)
-		this->buttonHeight = (this->m_size.y - logoHeight) / MAX_NUM_OF_ITEMS;
+		this->m_buttonHeight = 
+		(this->m_size.y - this->m_logoHeight) / MAX_NUM_OF_ITEMS;
 }
 //=============================================================================
 void Menu::draw(sf::RenderWindow &window, const Texturs& textures) const{
-	float logoHeight = 140,
-		logoWidth = 80,
-		buttonHeight;
+	sf::RectangleShape backGround;
+	backGround.setSize(m_size);
+	backGround.setFillColor(sf::Color::Blue);
 
-
-	//sf::RectangleShape backGround;
-	//backGround.setSize(m_size);
-	//backGround.setFillColor(sf::Color::Blue);
-
-	sf::RectangleShape menu = sf::RectangleShape(sf::Vector2f(this->m_size.x, logoHeight));
+	sf::RectangleShape logo = 
+		sf::RectangleShape(sf::Vector2f(this->m_size.x, this->m_logoHeight));
 	//set texture receive the texture as const.
-	menu.setTexture(&textures[MENU]);
-	menu.setPosition(this->m_position);
-	menu.setFillColor(sf::Color::Blue);
-	window.draw(menu);
-	for (int i = 0; i < MAX_NUM_OF_ITEMS; ++i) {
+	logo.setTexture(&textures[MENU]);
+	logo.setPosition(this->m_position);
+	window.draw(logo);
+	for (int i = 1; i < MAX_NUM_OF_ITEMS; ++i) {
 		sf::RectangleShape button = sf::RectangleShape
-		(sf::Vector2f(this->m_size.x, buttonHeight));
-		button.setPosition(this->m_position.x, buttonHeight * i);
-		button.setFillColor(sf::Color::Blue);
+		(sf::Vector2f(this->m_size.x, this->m_buttonHeight));
+		button.setPosition
+		(this->m_position.x, this->m_logoHeight + (this->m_buttonHeight * (i - 1)));
 		//button.setTexture();
 		button.setOutlineColor(sf::Color::White);
 		button.setOutlineThickness(1);
 	}
 }
 //=============================================================================
-sf::RectangleShape Menu::handleClick(const sf::Vector2f& clickLocation)
+char Menu::handleClick(const sf::Vector2f& clickLocation) const
 {
-	int buttonNum = this;
+	int buttonNum = clickLocation.y - 
+		(this->m_position.y + this->m_logoHeight) / this->m_buttonHeight;
 
-	auto i=size_t(0);
-	for (i = size_t(0); i < m_Buttons.size() ; ++i)
+	switch (buttonNum)
 	{
-		if (m_Buttons[i].createShape().getGlobalBounds().contains(clickLocation))
-			return m_Buttons[i].createShape();
+	case 0:
+		return PLAYER;
+	case 1:
+		return ENEMY;
+	case 2:
+		return COIN;
+	case 3:
+		return WALL;
+	case 4:
+		return LADDER;
+	case 5:
+		return ROD;
+	case 6:
+		return DELETE;
+	case 7:
+		return CLEAR;
+	case 8:
+		return SAVE;
+	default:
+		break;
 	}
-	return m_Buttons[i].createShape();
+	return NOTHING;
 }
  

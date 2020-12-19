@@ -9,6 +9,7 @@ public:
 	const sf::Texture& operator[](char)const;
 	int getSize()const;
 
+
 private:
 	std::vector<sf::Texture> m_texturs;
 };

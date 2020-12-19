@@ -1,6 +1,7 @@
 #include "Board.h"
 #include "BoardReader.h"
 #include "Macros.h"
+#include "Texturs.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 //============================================================================
@@ -44,7 +45,7 @@ void Board::handleClick(const sf::Vector2f& clicLoc, char clickType) {
 //============================================================================
 void Board::saveMap() { this->m_boardReader.saveMap(this->m_map); }
 //============================================================================
-void Board::draw(sf::RenderWindow& window)const {
+void Board::draw(sf::RenderWindow& window, const Texturs& textures)const {
 	sf::RectangleShape backGround = sf::RectangleShape(this->m_boardSize);
 	backGround.setFillColor(sf::Color(220, 226, 232, 255));
 	backGround.setPosition(this->m_startLoc);
@@ -61,7 +62,9 @@ void Board::draw(sf::RenderWindow& window)const {
 				this->m_startLoc.y + (boxSize.y * j));
 			box.setOutlineColor(sf::Color::Black);
 			box.setOutlineThickness(1);
-			box.setFillColor(sf::Color(220, 226, 232, 255));
+			if(this->m_map[i][j] != NOTHING)
+				//textures passed as const so its safe.
+				box.setTexture(&textures[this->m_map[i][j]]);
 			window.draw(box);
 		}
 	}

@@ -1,4 +1,3 @@
-
 //This is a general functions that help us to execute the game.
 #include <stdlib.h>
 #include <iostream>

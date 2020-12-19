@@ -2,7 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Macros.h"
-#include "Button.h"
 #include "Texturs.h"
 //=============================================================================
 class Menu
@@ -18,6 +17,6 @@ public:
 private:
 	sf::Vector2f m_position;
 	sf::Vector2f m_size;
-	float m_buttonHeight;
+	float m_buttonHeight, m_logoHeight;
 };
 

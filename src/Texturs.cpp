@@ -66,6 +66,8 @@ int Texturs::getSize()const {
 const sf::Texture& Texturs::operator[](char c)const {
 	switch (c)
 	{
+	case MENU:
+		return this->m_texturs[0];
 	case PLAYER: {
 		return this->m_texturs[1];
 	}
@@ -92,9 +94,6 @@ const sf::Texture& Texturs::operator[](char c)const {
 	}
 	case SAVE: {
 		return this->m_texturs[9];
-	}
-	case MENU: {
-		return this->m_texturs[10];
 	}
 	default: return this->m_texturs[0];
 	}
