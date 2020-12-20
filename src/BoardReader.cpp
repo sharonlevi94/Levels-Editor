@@ -1,7 +1,7 @@
 /* BoardReader
  * ===========================================================================
  */
- //---------------------------- include section -------------------------------
+ //=========================== include section ===============================
 #include "BoardReader.h"
 #include "Macros.h"
 #include "Utilities.h"
@@ -9,7 +9,7 @@
 #include <iostream>
 #include <fstream>
 
-//-------------------------- constractors section ----------------------------
+//========================== constractors section ============================
 /*============================================================================
  * The constractor is open the levels file and then the file reader
  * is waiting to load the first stage.
@@ -30,16 +30,15 @@ BoardReader::BoardReader(){
 	}
 	this->calcMapSize();
 }
-
-
+//============================================================================
 BoardReader::~BoardReader() {
 	this->m_boardReader.close();
 }
-//---------------------------- methods section -------------------------------
+//============================ methods section ===============================
 /*============================================================================
- * The method read a new level from the file into a 2D vector.
- * input: None.
- * output: the new level as a map object.
+ * The method reading the level from the Board.txt file.
+ * input: none.
+ * output: readed map.
 */
 std::vector<std::vector<char>> BoardReader::readLevel() {
 	std::vector<std::vector<char>> map = {};
@@ -59,10 +58,12 @@ std::vector<std::vector<char>> BoardReader::readLevel() {
 	std::string receivedLine;
 	this->m_boardReader >> receivedLine >> receivedLine;
 	this->m_boardReader.get();
-
+	
+	//reset map's cols
 	for (int i = 0; i < this->m_mapSize.x; ++i)
 		map.push_back({});
 	
+	//reading the map.
 	char receivedChar;
 	for (int y = 0; y < this->m_mapSize.y; ++y) {
 		for (int x = 0; x < this->m_mapSize.x; ++x) {
@@ -101,21 +102,19 @@ std::vector<std::vector<char>> BoardReader::readLevel() {
 		if (this->m_boardReader.peek() != '\0')
 			this->m_boardReader.get();
 	}
+	//return the ifstream to the received location.
 	this->m_boardReader.seekg(formerLoc);
 	return map;
 }
-/*============================================================================
- * The method is saving the received map into the file m_boardReader at.
- * input: map.
- * output: None.
-*/
+//============================================================================
 void BoardReader::saveMap(const std::vector<std::vector<char>> &map) {
 	std::ofstream writer;
 	writer.open(BOARD_PATH);
 	if (!writer.is_open())
 		terminate("board saving failure!");
-
+	//print map size
 	writer << (int)map[0].size() << ' ' << (int)map.size() << std::endl;
+	//print map
 	for (int y = 0; y < map[0].size(); ++y) {
 		for (int x = 0; x < map.size(); ++x) {
 			char temp = map[x][y];
@@ -127,10 +126,9 @@ void BoardReader::saveMap(const std::vector<std::vector<char>> &map) {
 	writer.close();
 }
 /*============================================================================
- * The method check if the input size are a digits and what is the
- * size of the received map.
- * input: None.
- * output: the size of the received map as an integer number.
+ * The method is calculate the map size by the demanded syntax
+ * input: none.
+ * output: none.
 */
 void BoardReader::calcMapSize() {
 	this->m_mapSize = sf::Vector2f(0, 0);
@@ -140,9 +138,9 @@ void BoardReader::calcMapSize() {
 		this->receiveMapSize();
 }
 /*============================================================================
- * The method 
- * input: .
- * output: .
+ * The method reading the map size from the Board.txt file.
+ * input: none.
+ * output: none.
 */
 void BoardReader::readMapSize() {
 	int firstLoc = (int)this->m_boardReader.tellg();
@@ -169,9 +167,9 @@ void BoardReader::readMapSize() {
 	this->m_boardReader.seekg(firstLoc);
 }
 /*============================================================================
- * The method
- * input: .
- * output: .
+ * The method receive the map size from the user.
+ * input: none.
+ * output: none.
 */
 void BoardReader::receiveMapSize() {
 	while (true) {
@@ -187,9 +185,9 @@ void BoardReader::receiveMapSize() {
 	}
 }
 /*============================================================================
- * The method
- * input: .
- * output: .
+ * The method is check if the map size is valid.
+ * input: none.
+ * output: if the map size is valid.
 */
 bool BoardReader::mapsizeIsValid()const {
 	bool intx = this->m_mapSize.x - (int)this->m_mapSize.x == 0;

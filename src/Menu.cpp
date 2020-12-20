@@ -1,9 +1,8 @@
+//=========================== include section ===============================
 #include "Menu.h"
-#include <iostream>
 #include "Texturs.h"
 #include "Utilities.h"
-using std::cout;
-//=============================================================================
+//========================== constractors section ============================
 Menu::Menu(sf::Vector2f size, sf::Vector2f position)
 	: m_size(size), m_position(position),
 	m_logoHeight(140),
@@ -12,7 +11,12 @@ Menu::Menu(sf::Vector2f size, sf::Vector2f position)
 		this->m_buttonHeight = 
 		(this->m_size.y - this->m_logoHeight) / MAX_NUM_OF_ITEMS;
 }
-//=============================================================================
+//============================ methods section ===============================
+/*============================================================================
+ * The method 
+ * input: .
+ * output: .
+*/
 void Menu::draw(sf::RenderWindow &window, const Textures& textures) const{
 	sf::RectangleShape backGround;
 	backGround.setSize(m_size);
@@ -36,7 +40,11 @@ void Menu::draw(sf::RenderWindow &window, const Textures& textures) const{
 		window.draw(button);
 	}
 }
-//=============================================================================
+/*============================================================================
+ * The method
+ * input: .
+ * output: .
+*/
 char Menu::handleClick(const sf::Vector2f& clickLocation) const
 {
 	//making sure click is on menu

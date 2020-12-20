@@ -1,10 +1,11 @@
+//=========================== include section ===============================
 #include <SFML/Graphics.hpp>
 #include "Controller.h"
 #include "Menu.h"
 #include "Board.h"
 #include "iostream"
 #include "Texturs.h"
-//=============================================================================
+//========================== constractors section ============================
 Controller::Controller() :
 	m_board(Board(sf::Vector2f((float)BOARD_WIDTH, (float)BOARD_HEIGHT),
 		sf::Vector2f((float)MENU_WIDTH, 0))),
@@ -12,7 +13,12 @@ Controller::Controller() :
 	m_menu(Menu(sf::Vector2f((float)MENU_WIDTH,(float)MENU_HEIGHT),
 		sf::Vector2f(0, 0))),
 	m_texturs(Textures()){}
-//=============================================================================
+//============================ methods section ===============================
+/*============================================================================
+ * The method is running the app.
+ * input: none.
+ * output: none.
+*/
 void Controller::run() {
 	this->m_texturs.loadTextures();
 	char clickMode = NOTHING;

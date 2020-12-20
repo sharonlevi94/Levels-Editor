@@ -1,4 +1,4 @@
-//This is a general functions that help us to execute the game.
+//=========================== include section ===============================
 #include <stdlib.h>
 #include <iostream>
 #include <SFML/Graphics.hpp>

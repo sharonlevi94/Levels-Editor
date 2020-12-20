@@ -1,15 +1,19 @@
+//=========================== include section ===============================
 #include "Texturs.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Macros.h"
 using std::cout;
-//===================================================================
+//========================== constractors section ============================
 Textures::Textures() : m_texturs({}){}
-//===================================================================
-int Textures::getSize()const {
-	return m_texturs.size();
-}
-//===================================================================
+//============================== gets section ================================
+int Textures::getSize()const {return (int)m_texturs.size();}
+//============================ methods section ===============================
+/*============================================================================
+ * The method
+ * input: .
+ * output: .
+*/
 const sf::Texture& Textures::operator[](char c)const {
 	switch (c)
 	{
@@ -45,7 +49,11 @@ const sf::Texture& Textures::operator[](char c)const {
 	default: return this->m_texturs[0];
 	}
 }
-//===================================================================
+/*============================================================================
+ * The method
+ * input: .
+ * output: .
+*/
 char Textures::getSymbol(int index)const {
 	switch (index)
 	{
@@ -81,7 +89,11 @@ char Textures::getSymbol(int index)const {
 	default: return MENU;
 	}
 }
-//===================================================================
+/*============================================================================
+ * The method
+ * input: .
+ * output: .
+*/
 void Textures::addTexture(const std::string address) {
 	auto input_texture = sf::Texture();
 
@@ -90,7 +102,11 @@ void Textures::addTexture(const std::string address) {
 	}
 	this->m_texturs.push_back(input_texture);
 }
-//===================================================================
+/*============================================================================
+ * The method
+ * input: .
+ * output: .
+*/
 void Textures::loadTextures() {
 	this->m_texturs = {};
 
