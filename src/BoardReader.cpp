@@ -17,12 +17,17 @@
  * output: none.
 */
 BoardReader::BoardReader(){
-	std::ofstream creator;
-	creator.open(BOARD_PATH);
-	if (!(creator.is_open()))
-		terminate("Unable to create Board.txt file!");
 	this->m_boardReader.open(BOARD_PATH);
-	creator.close();
+	if (!this->m_boardReader.is_open()) {
+		std::ofstream creator;
+		creator.open(BOARD_PATH);
+		if (!(creator.is_open()))
+			terminate("Unable to create Board.txt file!");
+		this->m_boardReader.open(BOARD_PATH);
+		if (!this->m_boardReader.is_open())
+			terminate("Board.txt file opening failure");
+		creator.close();
+	}
 	this->calcMapSize();
 }
 
@@ -111,8 +116,8 @@ void BoardReader::saveMap(const std::vector<std::vector<char>> &map) {
 		terminate("board saving failure!");
 
 	writer << (int)map[0].size() << ' ' << (int)map.size() << std::endl;
-	for (int x = 0; x < map.size(); ++x) {
-		for (int y = 0; y < map[x].size(); ++y) {
+	for (int y = 0; y < map[0].size(); ++y) {
+		for (int x = 0; x < map.size(); ++x) {
 			char temp = map[x][y];
 			writer << map[x][y];
 		}
