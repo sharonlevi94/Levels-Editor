@@ -6,11 +6,11 @@
 #include "Texturs.h"
 //=============================================================================
 Controller::Controller() :
+	m_board(Board(sf::Vector2f((float)BOARD_WIDTH, (float)BOARD_HEIGHT),
+		sf::Vector2f((float)MENU_WIDTH, 0))),
 	m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "ex4"),
 	m_menu(Menu(sf::Vector2f((float)MENU_WIDTH,(float)MENU_HEIGHT),
 		sf::Vector2f(0, 0))),
-	m_board(Board(sf::Vector2f((float)BOARD_WIDTH,(float)BOARD_HEIGHT),
-		          sf::Vector2f((float)MENU_WIDTH,0))),
 	m_texturs(Textures()){}
 //=============================================================================
 void Controller::run() {

@@ -110,7 +110,7 @@ void BoardReader::saveMap(const std::vector<std::vector<char>> &map) {
 	if (!writer.is_open())
 		terminate("board saving failure!");
 
-	writer << (int)map.size() << ' ' << (int)map[0].size() << std::endl;
+	writer << (int)map[0].size() << ' ' << (int)map.size() << std::endl;
 	for (int x = 0; x < map.size(); ++x) {
 		for (int y = 0; y < map[x].size(); ++y) {
 			char temp = map[x][y];
