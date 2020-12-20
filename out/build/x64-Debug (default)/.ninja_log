@@ -90,3 +90,6 @@
 1010	1341	630168815	SFMLExamples.exe	8daf5884aab271aa
 2	1235	630169261	CMakeFiles/SFMLExamples.dir/src/BoardReader.cpp.obj	b1e903dd8e2f5e6d
 1235	1579	630169261	SFMLExamples.exe	8daf5884aab271aa
+1	873	630169314	CMakeFiles/SFMLExamples.dir/src/Controller.cpp.obj	55806be481411e27
+873	1185	630169314	SFMLExamples.exe	8daf5884aab271aa
+1	278	630169594	build.ninja	def052c75e4ffe56
