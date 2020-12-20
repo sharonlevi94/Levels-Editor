@@ -2,6 +2,7 @@
 //---------------------------- include section -------------------------------
 #include <fstream>
 #include <vector>
+#include <SFML/Graphics.hpp>
 //------------------------------ using section -------------------------------
 using std::ifstream;
 /*----------------------------------------------------------------------------
@@ -16,17 +17,22 @@ public:
 
 	//------------------------- method section -------------------------------
 	
-	std::vector < std::vector<char>> readLevel();
+	std::vector < std::vector<char>>& readLevel();
 	void saveMap(const std::vector<std::vector<char>>&);
 
 	//-------------------------- gets section --------------------------------
-	int getSize()const;
+
+	int getWidth()const;
+	int getHeight()const;
+	bool mapsizeIsValid()const;
+	const sf::Vector2f& gesMapSize();
 private:
 	//--------------------- privete methods section --------------------------
-	
-	int receiveMapSize();
+	void calcMapSize();
+	void readMapSize();
+	void receiveMapSize();
 
 	//------------------------ members section -------------------------------
-	int m_mapSize;
+	sf::Vector2f m_mapSize;
 	std::fstream m_boardReader;
 };

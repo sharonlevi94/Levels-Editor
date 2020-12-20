@@ -1,6 +1,7 @@
 #include "Menu.h"
 #include <iostream>
 #include "Texturs.h"
+#include "Utilities.h"
 using std::cout;
 //=============================================================================
 Menu::Menu(sf::Vector2f size, sf::Vector2f position)
@@ -12,10 +13,11 @@ Menu::Menu(sf::Vector2f size, sf::Vector2f position)
 		(this->m_size.y - this->m_logoHeight) / MAX_NUM_OF_ITEMS;
 }
 //=============================================================================
-void Menu::draw(sf::RenderWindow &window, const Texturs& textures) const{
+void Menu::draw(sf::RenderWindow &window, const Textures& textures) const{
 	sf::RectangleShape backGround;
 	backGround.setSize(m_size);
 	backGround.setFillColor(sf::Color::Blue);
+	window.draw(backGround);
 
 	sf::RectangleShape logo = 
 		sf::RectangleShape(sf::Vector2f(this->m_size.x, this->m_logoHeight));
@@ -28,16 +30,23 @@ void Menu::draw(sf::RenderWindow &window, const Texturs& textures) const{
 		(sf::Vector2f(this->m_size.x, this->m_buttonHeight));
 		button.setPosition
 		(this->m_position.x, this->m_logoHeight + (this->m_buttonHeight * (i - 1)));
-		//button.setTexture();
+		button.setTexture(&textures[textures.getSymbol(i)]);
 		button.setOutlineColor(sf::Color::White);
 		button.setOutlineThickness(1);
+		window.draw(button);
 	}
 }
 //=============================================================================
 char Menu::handleClick(const sf::Vector2f& clickLocation) const
 {
-	int buttonNum = clickLocation.y - 
-		(this->m_position.y + this->m_logoHeight) / this->m_buttonHeight;
+	//making sure click is on menu
+	if (isInRec(this->m_position, this->m_size, clickLocation))
+		return;
+
+	if (clickLocation.y <= this->m_logoHeight)
+		return NOTHING;
+	int buttonNum = (int)((clickLocation.y - 
+		(this->m_position.y + this->m_logoHeight)) / this->m_buttonHeight);
 
 	switch (buttonNum)
 	{

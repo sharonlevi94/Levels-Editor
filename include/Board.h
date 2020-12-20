@@ -8,14 +8,16 @@ using std::vector;
 
 class Board {
 public:
-	Board(const sf::Vector2f& size = sf::Vector2f(0, 0), 
-		const sf::Vector2f& loc = sf::Vector2f(0, 0));
+	Board(const sf::Vector2f& size = sf::Vector2f(0, 0),
+		  const sf::Vector2f& loc = sf::Vector2f(0, 0));
 
-	int getSize()const;
+	int getHeight()const;
+	int getWidth()const;
 
-	void draw(sf::RenderWindow& window, const Texturs& textures)const;
+	void draw(sf::RenderWindow& window, const Textures& textures)const;
 	void handleClick(const sf::Vector2f& clicLoc, char clickType);
 	void saveMap();
+	void clearMap();
 private:
 	void loadMap();
 

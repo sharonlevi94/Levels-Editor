@@ -2,6 +2,7 @@
 #include "BoardReader.h"
 #include "Macros.h"
 #include "Texturs.h"
+#include "Utilities.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 //============================================================================
@@ -12,12 +13,13 @@ Board::Board(const sf::Vector2f& size, const sf::Vector2f& loc) :
 	m_map(m_boardReader.readLevel()),
 	playerLoc(sf::Vector2f(-1,-1)){}
 //============================================================================
-int Board::getSize() const{ return this->m_boardReader.getSize(); }
+int Board::getHeight() const{ return (int)this->m_map[0].size(); }
+int Board::getWidth() const { return (int)this->m_map.size(); }
 //============================================================================
 void Board::loadMap() { 
 	this->m_map = this->m_boardReader.readLevel(); 
-	for(int i = 0; i < this->getSize(); ++i)
-		for (int j = 0; j < this->getSize(); ++j)
+	for(int i = 0; i < this->getWidth(); ++i)
+		for (int j = 0; j < this->getHeight(); ++j)
 			if(this->m_map[i][j] == PLAYER){
 				this->playerLoc = sf::Vector2f((float)i,(float)j);
 				return;
@@ -26,45 +28,55 @@ void Board::loadMap() {
 
 //============================================================================
 void Board::handleClick(const sf::Vector2f& clicLoc, char clickType) {
-	//check board exception:
-	if (clicLoc.x < this->m_startLoc.x ||
-		clicLoc.x > this->m_startLoc.x + this->m_boardSize.x)
+	//making sure the click is in board exception:
+	if (isInRec(this->m_startLoc, this->m_boardSize, clicLoc))
 		return;
-	//calculate the location of the click:
-	int x = (int)((clicLoc.x - this->m_startLoc.x)/ (this->m_boardSize.x / this->getSize()));
-	int y = (int)((clicLoc.y - this->m_startLoc.y) / (this->m_boardSize.y / this->getSize()));
-	this->m_map[x][y] = clickType;
-
+	//calculate click's location:
+	int x = (int)((clicLoc.x - this->m_startLoc.x)/ 
+		(this->m_boardSize.x / this->getWidth()));
+	int y = (int)((clicLoc.y - this->m_startLoc.y) / 
+		(this->m_boardSize.y / this->getHeight()));
+	//delete old player location:
 	if (clickType == PLAYER) {
-		if(this->playerLoc == sf::Vector2f(-1,-1))
-			this->m_map[(int)this->playerLoc.x][(int)this->playerLoc.y] = NOTHING;
+		if (this->playerLoc != sf::Vector2f(-1, -1))
+			this->m_map[(int)this->playerLoc.x][(int)this->playerLoc.y] =
+			NOTHING;
 		this->playerLoc = sf::Vector2f((float)x, (float)y);
 	}
-	std::cout << "received click at:\nrow: " << x << " col: " << y << std::endl;
+	if (clickType == DELETE)
+		this->m_map[x][y] = NOTHING;
+	else
+		this->m_map[x][y] = clickType;
 }
 //============================================================================
 void Board::saveMap() { this->m_boardReader.saveMap(this->m_map); }
 //============================================================================
-void Board::draw(sf::RenderWindow& window, const Texturs& textures)const {
+void Board::clearMap() {
+	for(int i = 0; i < this->getWidth(); ++i)
+		for (int j = 0; j < this->getHeight(); ++j)
+			this->m_map[i][j] = NOTHING;
+}
+//============================================================================
+void Board::draw(sf::RenderWindow& window, const Textures& textures)const {
 	sf::RectangleShape backGround = sf::RectangleShape(this->m_boardSize);
 	backGround.setFillColor(sf::Color(220, 226, 232, 255));
 	backGround.setPosition(this->m_startLoc);
 	window.draw(backGround);
 
 	sf::Vector2f boxSize = sf::Vector2f(
-		this->m_boardSize.x / this->getSize(),
-		this->m_boardSize.y / this->getSize());
+		this->m_boardSize.x / this->getWidth(),
+		this->m_boardSize.y / this->getHeight());
 
-	for (int i = 0; i < this->getSize(); ++i) {
-		for (int j = 0; j < this->getSize(); ++j) {
+	for (int i = 0; i < this->getWidth(); ++i) {
+		for (int j = 0; j < this->getHeight(); ++j) {
 			sf::RectangleShape box = sf::RectangleShape(boxSize);
 			box.setPosition(this->m_startLoc.x + (boxSize.x * i),
 				this->m_startLoc.y + (boxSize.y * j));
 			box.setOutlineColor(sf::Color::Black);
 			box.setOutlineThickness(1);
-			//if(this->m_map[i][j] != NOTHING)
+			if(this->m_map[i][j] != NOTHING)
 				//textures passed as const so its safe.
-				//box.setTexture(&textures[this->m_map[i][j]]);
+				box.setTexture(&textures[this->m_map[i][j]]);
 			window.draw(box);
 		}
 	}

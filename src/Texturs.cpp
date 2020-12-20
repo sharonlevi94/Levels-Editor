@@ -4,66 +4,13 @@
 #include "Macros.h"
 using std::cout;
 //===================================================================
-Texturs::Texturs()
-{
-	sf::Texture input_texture;
-
-	if (!input_texture.loadFromFile("menu.png")) {
-		cout << "Cannot load menu.png\n";
-	}
-	m_texturs.push_back(input_texture);
-
-	if (!input_texture.loadFromFile("player.png")) {
-		cout << "Cannot load player.png\n";
-	}
-	m_texturs.push_back(input_texture);
-
-	if (!input_texture.loadFromFile("enemy.png")) {
-		cout << "Cannot load enemy.png\n";
-	}
-	m_texturs.push_back(input_texture);
-
-	if (!input_texture.loadFromFile("coin.png")) {
-		cout << "Cannot load enemy.png\n";
-	}
-	m_texturs.push_back(input_texture);
-
-	if (!input_texture.loadFromFile("wall.png")) {
-		cout << "Cannot load wall.png\n";
-	}
-	m_texturs.push_back(input_texture);
-
-	if (!input_texture.loadFromFile("ladder.png")) {
-		cout << "Cannot load ladder.png\n";
-	}
-	m_texturs.push_back(input_texture);
-
-	if (!input_texture.loadFromFile("rod.png")) {
-		cout << "Cannot load rod.png\n";
-	}
-	m_texturs.push_back(input_texture);
-
-	if (!input_texture.loadFromFile("eraser.png")) {
-		cout << "Cannot load eraser.png\n";
-	}
-	m_texturs.push_back(input_texture);
-
-	if (!input_texture.loadFromFile("trash.png")) {
-		cout << "Cannot load trash.png\n";
-	}
-	m_texturs.push_back(input_texture);
-
-	if (!input_texture.loadFromFile("save.png")) {
-		cout << "Cannot load trash.png\n";
-	}
-	m_texturs.push_back(input_texture);
-}
+Textures::Textures() : m_texturs({}){}
 //===================================================================
-int Texturs::getSize()const {
+int Textures::getSize()const {
 	return m_texturs.size();
 }
 //===================================================================
-const sf::Texture& Texturs::operator[](char c)const {
+const sf::Texture& Textures::operator[](char c)const {
 	switch (c)
 	{
 	case MENU:
@@ -99,7 +46,7 @@ const sf::Texture& Texturs::operator[](char c)const {
 	}
 }
 //===================================================================
-char Texturs::getSymbol(int index)const {
+char Textures::getSymbol(int index)const {
 	switch (index)
 	{
 	case 0:
@@ -133,4 +80,37 @@ char Texturs::getSymbol(int index)const {
 	}
 	default: return MENU;
 	}
+}
+//===================================================================
+void Textures::addTexture(const std::string address) {
+	auto input_texture = sf::Texture();
+
+	if (!input_texture.loadFromFile(address)) {
+		cout << "Cannot load " << address << std::endl;
+	}
+	this->m_texturs.push_back(input_texture);
+}
+//===================================================================
+void Textures::loadTextures() {
+	this->m_texturs = {};
+
+	addTexture("menu.png");
+
+	addTexture("player.png");
+
+	addTexture("enemy.png");
+
+	addTexture("coin.png");
+
+	addTexture("wall.png");
+
+	addTexture("ladder.png");
+
+	addTexture("rod.png");
+
+	addTexture("eraser.png");
+
+	addTexture("trash.png");
+
+	addTexture("save.png");
 }

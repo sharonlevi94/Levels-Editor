@@ -1,16 +1,19 @@
 #pragma once
 #include <vector>
+#include <iostream>
 #include <SFML/Graphics.hpp>
 //========================================================================
-class Texturs
+class Textures
 {
 public:
-	Texturs();
+	Textures();
 	const sf::Texture& operator[](char)const;
 	int getSize()const;
 	char getSymbol(int)const;
+	void loadTextures();
 
 private:
+	void addTexture(const std::string);
 	std::vector<sf::Texture> m_texturs;
 };
 
