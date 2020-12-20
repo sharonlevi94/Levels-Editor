@@ -5,9 +5,8 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 /*============================================================================
- * BoardReader
- * The class is loading the Boards file, and return it's information by the
- * needed syntax.
+ * Board
+ * the calss is responsible for the map drawing updating and saving.
 */
 class Board {
 public:
