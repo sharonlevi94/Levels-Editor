@@ -15,9 +15,11 @@ public:
 	//========================= method section ===============================
 
 	void run();
+	void draw();
 private:
 	//======================== members section ===============================
 
+	char m_clickMode;
 	Textures m_texturs;
 	sf::RenderWindow m_window;
 	Menu m_menu;

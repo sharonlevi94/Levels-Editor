@@ -15,7 +15,8 @@ Controller::Controller() :
 	m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "ex4"),
 	m_menu(Menu(sf::Vector2f((float)MENU_WIDTH,(float)MENU_HEIGHT),
 		sf::Vector2f(0, 0))),
-	m_texturs(Textures()){}
+	m_texturs(Textures()),
+	m_clickMode(NOTHING){}
 //============================ methods section ===============================
 /*============================================================================
  * The method is running the app.
@@ -23,23 +24,16 @@ Controller::Controller() :
  * output: none.
 */
 void Controller::run() {
+	//load textures after window opened as neede for textures loadings
 	this->m_texturs.loadTextures();
-	char clickMode = NOTHING;
 	while (this->m_window.isOpen())
 	{
+		//draw state
 		this->m_window.clear();
-		this->m_menu.draw(this->m_window, this->m_texturs);
-		this->m_board.draw(this->m_window, this->m_texturs);
-		if (clickMode != NOTHING) {
-			sf::RectangleShape mouseTexture = sf::RectangleShape(
-				sf::Vector2f(100, 100));
-			mouseTexture.setTexture(&this->m_texturs[clickMode]);
-			mouseTexture.setPosition(static_cast<sf::Vector2f>
-				(sf::Mouse::getPosition(this->m_window)));
-			mouseTexture.setFillColor(sf::Color(255, 255, 255, 100));
-			this->m_window.draw(mouseTexture);
-		}
+		this->draw();
 		this->m_window.display();
+
+		//calc click
 		if (auto event = sf::Event{}; m_window.waitEvent(event)) {
 			switch (event.type)
 			{
@@ -63,14 +57,36 @@ void Controller::run() {
 						this->m_board.saveMap();
 						break;
 					default:
-						clickMode = choose;
+						this->m_clickMode = choose;
 						break;
 					}
 				}
 				else
-					this->m_board.handleClick(location, clickMode);
+					this->m_board.handleClick(location, this->m_clickMode);
 			}
 			}
 		}
 	}
+}
+/*============================================================================
+ * The method is draw all the Console's objects.
+ * input: none.
+ * output: none.
+*/
+void Controller::draw() {
+	//draw menu
+	this->m_menu.draw(this->m_window, this->m_texturs);
+	//draw board
+	this->m_board.draw(this->m_window, this->m_texturs);
+	//draw mouse texture if needed
+	if (this->m_clickMode != NOTHING) {
+		sf::RectangleShape mouseTexture = sf::RectangleShape(
+			sf::Vector2f(100, 100));
+		mouseTexture.setTexture(&this->m_texturs[this->m_clickMode]);
+		mouseTexture.setPosition(static_cast<sf::Vector2f>
+			(sf::Mouse::getPosition(this->m_window)));
+		mouseTexture.setFillColor(sf::Color(255, 255, 255, 100));
+		this->m_window.draw(mouseTexture);
+	}
+
 }
