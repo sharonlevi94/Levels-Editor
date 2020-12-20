@@ -10,8 +10,10 @@ Board::Board(const sf::Vector2f& size, const sf::Vector2f& loc) :
 	m_boardReader(BoardReader()),
 	m_boardSize(size),
 	m_startLoc(loc),
-	m_map(m_boardReader.readLevel()),
-	playerLoc(sf::Vector2f(-1,-1)){}
+	m_map({}),
+	playerLoc(sf::Vector2f(-1,-1)){
+	this->loadMap();
+}
 //============================================================================
 int Board::getHeight() const{ return (int)this->m_map[0].size(); }
 int Board::getWidth() const { return (int)this->m_map.size(); }

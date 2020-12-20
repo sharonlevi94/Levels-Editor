@@ -41,7 +41,7 @@ char Menu::handleClick(const sf::Vector2f& clickLocation) const
 {
 	//making sure click is on menu
 	if (isInRec(this->m_position, this->m_size, clickLocation))
-		return;
+		return NOTHING;
 
 	if (clickLocation.y <= this->m_logoHeight)
 		return NOTHING;

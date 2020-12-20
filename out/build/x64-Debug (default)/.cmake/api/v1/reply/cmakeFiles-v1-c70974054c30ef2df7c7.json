@@ -182,9 +182,6 @@
 		},
 		{
 			"path" : "resources/wall.png"
-		},
-		{
-			"path" : "resources/Board.txt"
 		}
 	],
 	"kind" : "cmakeFiles",

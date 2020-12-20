@@ -16,16 +16,20 @@
  * input: none.
  * output: none.
 */
-BoardReader::BoardReader() {
-	this->m_boardReader.open(BOARD_PATH);
-	if (!(this->m_boardReader.is_open()))
+BoardReader::BoardReader(){
+	std::ofstream creator;
+	creator.open(BOARD_PATH);
+	if (!(creator.is_open()))
 		terminate("Unable to create Board.txt file!");
-	this->m_mapSize = receiveMapSize();
+	this->m_boardReader.open(BOARD_PATH);
+	creator.close();
+	this->calcMapSize();
 }
-//------------------------------ gets section --------------------------------
-int BoardReader::getWidth()const { return this->m_mapSize.x; }
-int BoardReader::getHeight()const { return this->m_mapSize.y; }
 
+
+BoardReader::~BoardReader() {
+	this->m_boardReader.close();
+}
 //---------------------------- methods section -------------------------------
 /*============================================================================
  * The method read a new level from the file into a 2D vector.
@@ -33,48 +37,53 @@ int BoardReader::getHeight()const { return this->m_mapSize.y; }
  * output: the new level as a map object.
 */
 std::vector<std::vector<char>> BoardReader::readLevel() {
-	std::vector<std::vector<char>> map;
+	std::vector<std::vector<char>> map = {};
+	int formerLoc = (int)this->m_boardReader.tellg();
 	
 	if (this->m_boardReader.peek() == EOF) {
 		for (int i = 0; i < this->m_mapSize.x; ++i) {
 			std::vector<char> row = {};
-			for (int j = 0; j < this->m_mapSize; ++j)
+			for (int j = 0; j < this->m_mapSize.y; ++j)
 				row.push_back(NOTHING);
 			map.push_back(row);
 		}
 		return map;
 	}
 
-	int formerLoc = (int)this->m_boardReader.tellg();
+	//skip line of size defanition
+	std::string receivedLine;
+	this->m_boardReader >> receivedLine >> receivedLine;
+	this->m_boardReader.get();
+
+	for (int i = 0; i < this->m_mapSize.x; ++i)
+		map.push_back({});
+	
 	char receivedChar;
-	if(this->m_boardReader.peek() == '\n')
-		this->m_boardReader.get();
-	for (int i = 0; i < this->m_mapSize; ++i) {
-		std::vector<char> receivedMapRow = {};
-		for (int j = 0; j < this->m_mapSize; ++j) {
+	for (int y = 0; y < this->m_mapSize.y; ++y) {
+		for (int x = 0; x < this->m_mapSize.x; ++x) {
 			this->m_boardReader.get(receivedChar);
 			switch (receivedChar)
 			{
 			case PLAYER:
-				receivedMapRow.push_back(PLAYER);
+				map[x].push_back(PLAYER);
 				break;
 			case ENEMY:
-				receivedMapRow.push_back(ENEMY);
+				map[x].push_back(ENEMY);
 				break;
 			case WALL:
-				receivedMapRow.push_back(WALL);
+				map[x].push_back(WALL);
 				break;
 			case NOTHING:
-				receivedMapRow.push_back(NOTHING);
+				map[x].push_back(NOTHING);
 				break;
 			case LADDER:
-				receivedMapRow.push_back(LADDER);
+				map[x].push_back(LADDER);
 				break;
 			case ROD:
-				receivedMapRow.push_back(ROD);
+				map[x].push_back(ROD);
 				break;
 			case COIN:
-				receivedMapRow.push_back(COIN);
+				map[x].push_back(COIN);
 				break;
 			default:
 				std::string errorMessage = "receiving the char ";
@@ -84,9 +93,8 @@ std::vector<std::vector<char>> BoardReader::readLevel() {
 				break;
 			}
 		}
-		if(this->m_boardReader.peek() != '\0')
+		if (this->m_boardReader.peek() != '\0')
 			this->m_boardReader.get();
-		map.push_back(receivedMapRow);
 	}
 	this->m_boardReader.seekg(formerLoc);
 	return map;
@@ -97,14 +105,21 @@ std::vector<std::vector<char>> BoardReader::readLevel() {
  * output: None.
 */
 void BoardReader::saveMap(const std::vector<std::vector<char>> &map) {
-	this->m_boardReader.seekg(0);
-	this->m_boardReader << (int)map.size() << std::endl;
-	for (int i = 0; i < this->m_mapSize; ++i) {
-		for (int j = 0; j < this->m_mapSize; ++j)
-			this->m_boardReader << map[i][j];
-		this->m_boardReader << std::endl;
-	}
+	std::ofstream writer;
+	writer.open(BOARD_PATH);
+	if (!writer.is_open())
+		terminate("board saving failure!");
 
+	writer << (int)map.size() << ' ' << (int)map[0].size() << std::endl;
+	for (int x = 0; x < map.size(); ++x) {
+		for (int y = 0; y < map[x].size(); ++y) {
+			char temp = map[x][y];
+			writer << map[x][y];
+		}
+		writer << std::endl;
+	}
+	writer << '\0';
+	writer.close();
 }
 /*============================================================================
  * The method check if the input size are a digits and what is the
@@ -116,8 +131,8 @@ void BoardReader::calcMapSize() {
 	this->m_mapSize = sf::Vector2f(0, 0);
 	if (this->m_boardReader.peek() != EOF)
 		readMapSize();
-	if()
-	this->receiveMapSize();
+	if(!this->mapsizeIsValid())
+		this->receiveMapSize();
 }
 /*============================================================================
  * The method 
@@ -125,7 +140,7 @@ void BoardReader::calcMapSize() {
  * output: .
 */
 void BoardReader::readMapSize() {
-	int firstLoc = this->m_boardReader.tellg();
+	int firstLoc = (int)this->m_boardReader.tellg();
 	this->m_boardReader.seekg(0);
 
 	this->m_mapSize.x = 0;
@@ -145,6 +160,8 @@ void BoardReader::readMapSize() {
 		this->m_mapSize.x *= 10;
 		this->m_mapSize.x += charSize[i] - '0';
 	}
+
+	this->m_boardReader.seekg(firstLoc);
 }
 /*============================================================================
  * The method
@@ -157,7 +174,7 @@ void BoardReader::receiveMapSize() {
 		std::cin >> this->m_mapSize.y;
 		std::cout << "please enter wanted map width: ";
 		std::cin >> this->m_mapSize.x;
-		//checkReceived syntax.
+		//check the received syntax.
 		if (!this->mapsizeIsValid())
 			std::cout << "invalid map size!\n";
 		else
@@ -170,8 +187,12 @@ void BoardReader::receiveMapSize() {
  * output: .
 */
 bool BoardReader::mapsizeIsValid()const {
-	return(this->m_mapSize.x == (int)this->m_mapSize.x ||
-		this->m_mapSize.x != 0 ||
-		this->m_mapSize.y == (int)this->m_mapSize.y ||
+	bool intx = this->m_mapSize.x - (int)this->m_mapSize.x == 0;
+	bool xval = this->m_mapSize.x != 0;
+	bool inty = this->m_mapSize.y - (int)this->m_mapSize.y == 0;
+	bool yval = this->m_mapSize.y != 0;
+	return(this->m_mapSize.x == (int)this->m_mapSize.x &&
+		this->m_mapSize.x != 0 &&
+		this->m_mapSize.y == (int)this->m_mapSize.y &&
 		this->m_mapSize.y != 0);
 }
