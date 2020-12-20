@@ -1,3 +1,6 @@
+/* Texture.cpp
+ * ===========================================================================
+ */
 //=========================== include section ===============================
 #include "Texturs.h"
 #include <SFML/Graphics.hpp>
@@ -10,9 +13,10 @@ Textures::Textures() : m_texturs({}){}
 int Textures::getSize()const {return (int)m_texturs.size();}
 //============================ methods section ===============================
 /*============================================================================
- * The method
- * input: .
- * output: .
+ * The method receive char and return the needed texture by the Macros 
+ * declareations.
+ * input: wanted texture by the macros decleration.
+ * output: wanted texture.
 */
 const sf::Texture& Textures::operator[](char c)const {
 	switch (c)
@@ -50,9 +54,9 @@ const sf::Texture& Textures::operator[](char c)const {
 	}
 }
 /*============================================================================
- * The method
- * input: .
- * output: .
+ * The method receive the index and return which texture is in this texture.
+ * input: index.
+ * output: which txture is in the received index.
 */
 char Textures::getSymbol(int index)const {
 	switch (index)
@@ -90,9 +94,9 @@ char Textures::getSymbol(int index)const {
 	}
 }
 /*============================================================================
- * The method
- * input: .
- * output: .
+ * The method add texture to the texture vecture from the file
+ * input: tecture's file path.
+ * output: none.
 */
 void Textures::addTexture(const std::string address) {
 	auto input_texture = sf::Texture();
@@ -103,9 +107,9 @@ void Textures::addTexture(const std::string address) {
 	this->m_texturs.push_back(input_texture);
 }
 /*============================================================================
- * The method
- * input: .
- * output: .
+ * The method loading all the demanded textures
+ * input: none.
+ * output: none.
 */
 void Textures::loadTextures() {
 	this->m_texturs = {};

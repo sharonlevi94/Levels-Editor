@@ -1,3 +1,6 @@
+/* Utilities.cpp
+ * ===========================================================================
+ */
 //=========================== include section ===============================
 #include <stdlib.h>
 #include <iostream>
@@ -5,7 +8,7 @@
 #include "Utilities.h"
 //========================================================================
 /* The function print the received error message and close the program
-* with -1 return value.
+ * with -1 return value.
  * input: string
  * output: none.
 */
@@ -13,7 +16,12 @@ void terminate(const std::string errorMessage) {
 	std::cerr << errorMessage << std::endl;
 	exit(EXIT_FAILURE);
 }
-
+//========================================================================
+/* The function calc and return if the received click is in the 
+ * received rectangle on the map.
+ * input: string
+ * output: none.
+*/
 bool isInRec(const sf::Vector2f& startLoc, const sf::Vector2f& size, 
 	const sf::Vector2f& point) {
 	return (point.x < startLoc.x ||

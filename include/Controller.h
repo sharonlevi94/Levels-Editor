@@ -4,8 +4,14 @@
 #include "Menu.h"
 #include "Board.h"
 #include "Texturs.h"
+/*============================================================================
+ * BoardReader
+ * The class is loading the Boards file, and return it's information by the
+ * needed syntax.
+*/
 class Controller {
 public:
+	//========================= constractors section =========================
 	Controller();
 
 	void run();

@@ -1,3 +1,6 @@
+/* Menu.cpp
+ * ===========================================================================
+ */
 //=========================== include section ===============================
 #include "Menu.h"
 #include "Texturs.h"
@@ -12,11 +15,7 @@ Menu::Menu(sf::Vector2f size, sf::Vector2f position)
 		(this->m_size.y - this->m_logoHeight) / MAX_NUM_OF_ITEMS;
 }
 //============================ methods section ===============================
-/*============================================================================
- * The method 
- * input: .
- * output: .
-*/
+//============================================================================
 void Menu::draw(sf::RenderWindow &window, const Textures& textures) const{
 	sf::RectangleShape backGround;
 	backGround.setSize(m_size);
@@ -41,9 +40,9 @@ void Menu::draw(sf::RenderWindow &window, const Textures& textures) const{
 	}
 }
 /*============================================================================
- * The method
- * input: .
- * output: .
+ * The method calculate which button clicked
+ * input: click location.
+ * output: click type.
 */
 char Menu::handleClick(const sf::Vector2f& clickLocation) const
 {
