@@ -3,7 +3,7 @@
 //============================= main function ================================
 int main()
 {
-    Controller controller = Controller();
+    Controller controller;
     controller.run();
     
     return 0;

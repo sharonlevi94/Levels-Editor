@@ -4,4 +4,5 @@
                                      "BoardReader.cpp"
                                      "Board.cpp"
                                      "Utilities.cpp"
-                                     "Texturs.cpp")
+                                     "Texturs.cpp"
+                                     "MessageWindow")

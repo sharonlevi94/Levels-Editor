@@ -24,7 +24,11 @@ Controller::Controller() :
  * output: none.
 */
 void Controller::run() {
-	//load textures after window opened as neede for textures loadings
+	/*loading the texture after window display because else receiving error 
+	  message.
+	*/
+	this->m_window.clear();
+	this->m_window.display();
 	this->m_texturs.loadTextures();
 	while (this->m_window.isOpen())
 	{
@@ -51,6 +55,7 @@ void Controller::run() {
 					case NOTHING:
 						break;
 					case CLEAR:
+						this->m_window.clear();
 						this->m_board.clearMap();
 						break;
 					case SAVE:

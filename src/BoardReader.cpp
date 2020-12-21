@@ -117,12 +117,13 @@ void BoardReader::saveMap(const std::vector<std::vector<char>> &map) {
 	//print map
 	for (int y = 0; y < map[0].size(); ++y) {
 		for (int x = 0; x < map.size(); ++x) {
-			char temp = map[x][y];
 			writer << map[x][y];
 		}
-		writer << std::endl;
+		if(y + 1 < map[0].size())
+			writer << std::endl;
+		else
+			writer << '\0';
 	}
-	writer << '\0';
 	writer.close();
 }
 /*============================================================================
@@ -134,8 +135,8 @@ void BoardReader::calcMapSize() {
 	this->m_mapSize = sf::Vector2f(0, 0);
 	if (this->m_boardReader.peek() != EOF)
 		readMapSize();
-	if(!this->mapsizeIsValid())
-		this->receiveMapSize();
+	if(!mapSizeIsValid(this->m_mapSize))
+		this->m_mapSize = receiveMapSize();
 }
 /*============================================================================
  * The method reading the map size from the Board.txt file.
@@ -165,37 +166,4 @@ void BoardReader::readMapSize() {
 	}
 
 	this->m_boardReader.seekg(firstLoc);
-}
-/*============================================================================
- * The method receive the map size from the user.
- * input: none.
- * output: none.
-*/
-void BoardReader::receiveMapSize() {
-	while (true) {
-		std::cout << "please enter wanted map height: ";
-		std::cin >> this->m_mapSize.y;
-		std::cout << "please enter wanted map width: ";
-		std::cin >> this->m_mapSize.x;
-		//check the received syntax.
-		if (!this->mapsizeIsValid())
-			std::cout << "invalid map size!\n";
-		else
-			break;
-	}
-}
-/*============================================================================
- * The method is check if the map size is valid.
- * input: none.
- * output: if the map size is valid.
-*/
-bool BoardReader::mapsizeIsValid()const {
-	bool intx = this->m_mapSize.x - (int)this->m_mapSize.x == 0;
-	bool xval = this->m_mapSize.x != 0;
-	bool inty = this->m_mapSize.y - (int)this->m_mapSize.y == 0;
-	bool yval = this->m_mapSize.y != 0;
-	return(this->m_mapSize.x == (int)this->m_mapSize.x &&
-		this->m_mapSize.x != 0 &&
-		this->m_mapSize.y == (int)this->m_mapSize.y &&
-		this->m_mapSize.y != 0);
 }

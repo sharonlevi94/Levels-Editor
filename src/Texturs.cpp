@@ -99,7 +99,7 @@ char Textures::getSymbol(int index)const {
  * output: none.
 */
 void Textures::addTexture(const std::string address) {
-	auto input_texture = sf::Texture();
+	sf::Texture input_texture = sf::Texture();
 
 	if (!input_texture.loadFromFile(address)) {
 		cout << "Cannot load " << address << std::endl;

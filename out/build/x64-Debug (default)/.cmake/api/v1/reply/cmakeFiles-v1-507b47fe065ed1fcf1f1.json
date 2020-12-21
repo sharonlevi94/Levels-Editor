@@ -730,6 +730,9 @@
 		},
 		{
 			"path" : "resources/wall.png"
+		},
+		{
+			"path" : "resources/ARIALBD.TTF"
 		}
 	],
 	"kind" : "cmakeFiles",

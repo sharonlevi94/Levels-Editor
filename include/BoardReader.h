@@ -13,6 +13,7 @@ using std::ifstream;
 class BoardReader {
 public:
 	//========================= constractors section =========================
+
 	BoardReader();
 
 	~BoardReader();
@@ -20,13 +21,11 @@ public:
 	
 	std::vector < std::vector<char>> readLevel();
 	void saveMap(const std::vector<std::vector<char>>&);
-	bool mapsizeIsValid()const;
 private:
 	//===================== privete methods section ==========================
 
 	void calcMapSize();
 	void readMapSize();
-	void receiveMapSize();
 
 	//======================== members section ===============================
 	sf::Vector2f m_mapSize;

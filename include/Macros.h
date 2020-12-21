@@ -16,10 +16,14 @@ constexpr auto MENU = 'm';
 //=========================== Window's parameters ============================
 constexpr auto WINDOW_HEIGHT = 1000;
 constexpr auto WINDOW_WIDTH = 1800;
-#define MENU_HEIGHT WINDOW_HEIGHT
-#define MENU_WIDTH WINDOW_WIDTH/10
-#define BOARD_HEIGHT WINDOW_HEIGHT
-#define BOARD_WIDTH WINDOW_WIDTH - MENU_WIDTH
+constexpr auto MESSAGE_WIDTH = 600;
+constexpr auto MESSAGE_HEIGHT = 400;
+constexpr auto MESSAGE_LOC_HEIGHT = WINDOW_HEIGHT / 2 - MESSAGE_HEIGHT;
+constexpr auto MESSAGE_LOC_WIDTH = WINDOW_WIDTH / 2 - MESSAGE_WIDTH;
+constexpr auto MENU_HEIGHT = WINDOW_HEIGHT;
+constexpr auto MENU_WIDTH = WINDOW_WIDTH / 10;
+constexpr auto BOARD_HEIGHT = WINDOW_HEIGHT;
+constexpr auto BOARD_WIDTH = WINDOW_WIDTH - MENU_WIDTH;
 
 //========================== saving map's file path ===========================
 constexpr auto BOARD_PATH = "Board.txt";

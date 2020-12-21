@@ -48,7 +48,8 @@ void Board::loadMap() {
 */
 void Board::handleClick(const sf::Vector2f& clicLoc, char clickType) {
 	//making sure the click is in board exception:
-	if (isInRec(this->m_startLoc, this->m_boardSize, clicLoc))
+	if (isInRec(this->m_startLoc, this->m_boardSize, clicLoc) ||
+		clickType == NOTHING)
 		return;
 	//calculate click's location:
 	int x = (int)((clicLoc.x - this->m_startLoc.x)/ 
@@ -61,6 +62,9 @@ void Board::handleClick(const sf::Vector2f& clicLoc, char clickType) {
 			this->m_map[(int)this->playerLoc.x][(int)this->playerLoc.y] =
 			NOTHING;
 		this->playerLoc = sf::Vector2f((float)x, (float)y);
+	}
+	else if (sf::Vector2f((float)x, (float)y) == this->playerLoc) {
+		this->playerLoc = sf::Vector2f(-1, -1);
 	}
 	//change the clicked box value by the click type.
 	if (clickType == DELETE)
@@ -76,9 +80,13 @@ void Board::saveMap() { this->m_boardReader.saveMap(this->m_map); }
  * output: none.
 */
 void Board::clearMap() {
-	for(int i = 0; i < this->getWidth(); ++i)
-		for (int j = 0; j < this->getHeight(); ++j)
-			this->m_map[i][j] = NOTHING;
+	sf::Vector2f size = receiveMapSize();
+	this->m_map = {};
+	for (int i = 0; i < size.x; ++i)
+		this->m_map.push_back({});
+	for(int y = 0; y < size.y; ++y)
+		for (int x = 0; x < size.x; ++x)
+			this->m_map[x].push_back(NOTHING);
 }
 //============================================================================
 void Board::draw(sf::RenderWindow& window, const Textures& textures)const {
