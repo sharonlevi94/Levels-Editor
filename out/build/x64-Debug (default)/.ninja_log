@@ -14,3 +14,7 @@
 7	1533	630189097	CMakeFiles/SFMLExamples.dir/src/Board.cpp.obj	5521993af458206f
 13	1570	630189097	CMakeFiles/SFMLExamples.dir/src/BoardReader.cpp.obj	b1e903dd8e2f5e6d
 1570	1974	630189097	SFMLExamples.exe	4b88ddc8e46ca9ef
+1	1000	630189289	CMakeFiles/SFMLExamples.dir/src/Controller.cpp.obj	55806be481411e27
+1001	1307	630189289	SFMLExamples.exe	4b88ddc8e46ca9ef
+1	1629	630256724	CMakeFiles/SFMLExamples.dir/src/Controller.cpp.obj	55806be481411e27
+1629	2419	630256725	SFMLExamples.exe	4b88ddc8e46ca9ef
