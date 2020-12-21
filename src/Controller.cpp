@@ -55,7 +55,6 @@ void Controller::run() {
 					case NOTHING:
 						break;
 					case CLEAR:
-						this->m_window.clear();
 						this->m_board.clearMap();
 						break;
 					case SAVE:
