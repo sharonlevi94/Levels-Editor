@@ -16,7 +16,8 @@ Controller::Controller() :
 	m_menu(Menu(sf::Vector2f((float)MENU_WIDTH,(float)MENU_HEIGHT),
 		sf::Vector2f(0, 0))),
 	m_texturs(Textures()),
-	m_clickMode(NOTHING){}
+	m_clickMode(NOTHING){
+}
 //============================ methods section ===============================
 /*============================================================================
  * The method is running the app.
@@ -24,11 +25,11 @@ Controller::Controller() :
  * output: none.
 */
 void Controller::run() {
-	/*loading the texture after window display because else receiving error 
+	/*loading the texture after window display else, receiving an error 
 	  message.
 	*/
 	this->m_window.clear();
-	this->m_window.display();
+	//this->m_window.display();
 	this->m_texturs.loadTextures();
 	while (this->m_window.isOpen())
 	{
